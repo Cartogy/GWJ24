@@ -5,7 +5,7 @@ onready var chick = get_owner()
 var max_distance_away = 2
 
 var goal = Vector2()
-var speed = 10
+var speed = 30
 var direction = Vector2()
 
 func enter():
@@ -13,12 +13,18 @@ func enter():
 
 func update(delta):
 	var direction = direction_to_follow()
-	chick.direction = direction
-	chick.move_and_slide(chick.direction * chick.speed, Vector2(0,0))
+	
+
+	direction = chick.move_and_slide(direction * chick.speed, Vector2(0,0))
+	
+	# change direction of chick if moving.
+	if direction != Vector2.ZERO:
+		chick.direction = direction
 	
 
 ## Main function to follow lead ##
 func direction_to_follow():
+	
 	var goal_pos = calculate_destination(chick.get_lead(), chick.get_lead().get_gap())
 	draw_destination(goal_pos)
 	var distance = calculate_distance(goal_pos, chick.position)
@@ -33,7 +39,7 @@ func direction_to_follow():
 
 
 func calculate_destination(leader, gap):
-	var position =  leader.position - leader.get_direction().normalized() * leader.get_gap()	# Position behind lead
+	var position =  leader.get_global_position() - leader.get_direction().normalized() * leader.get_gap()	# Position behind lead
 	
 	return position
 	

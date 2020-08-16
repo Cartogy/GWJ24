@@ -1,5 +1,7 @@
 extends Node
 
+export (int) var gap_per_chick
+export (float) var speed_chick
 export (NodePath) var main_duck_path
 var main_duck
 
@@ -12,6 +14,8 @@ func _ready():
 	main_duck = get_node(main_duck_path)
 	for chick in get_children():
 		chick.set_lead(main_duck)
+		chick.set_gap(gap_per_chick)
+		chick.set_speed(speed_chick)
 		chicks.append(chick)
 		
 # Responsible for commands

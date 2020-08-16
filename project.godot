@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Gwj 24"
 config/icon="res://icon.png"
 
+[autoload]
+
+Follow="*res://Autoload/Follow.gd"
+
 [input]
 
 stay_cmd={

@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
-export (int) var gap
+
 export (NodePath) var duck_path
 var lead	# the entity that it will follow
+var gap
 
 var circle_point = Vector2()
 
@@ -31,6 +32,8 @@ func get_gap():
 func set_gap(val):
 	gap = val
 	
+func set_speed(val):
+	speed = val
 	
 func set_circle_center(point):
 	circle_point = point
