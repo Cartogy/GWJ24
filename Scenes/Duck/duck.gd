@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export (int) var speed
+
 var direction = Vector2(0, 0)
 
 var gap_per_chick = 2

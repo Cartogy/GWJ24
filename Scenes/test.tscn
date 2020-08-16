@@ -8,6 +8,7 @@
 
 [node name="Duck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 69.9716, 31.4267 )
+speed = 30
 
 [node name="FlockManager" parent="." instance=ExtResource( 3 )]
 main_duck_path = NodePath("../Duck")

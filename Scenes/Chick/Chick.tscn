@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Textures/Chick/chick_proto.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Chick/follow.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Chick/chick.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/StateMachine/state_machine.gd" type="Script" id=4]
@@ -16,6 +16,9 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.823529, 0.85098, 0.341176, 1 )
+position = Vector2( 1.90735e-06, -0.0787449 )
+scale = Vector2( 0.207628, 0.254383 )
 texture = ExtResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Duck/movement.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Duck/Duck_proto_Back.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Duck/Duck_proto_right.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Textures/Duck/duck_proto_front.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Duck/duck.gd" type="Script" id=5]
 
@@ -25,17 +25,16 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.1875, 8 )
+extents = Vector2( 8.58036, 8 )
 
 [node name="Duck" type="KinematicBody2D"]
-position = Vector2( 38.4598, 18.4375 )
+position = Vector2( -1.04017, -0.0624981 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.214184, 0.0442142 )
+scale = Vector2( 0.267404, 0.244253 )
 frames = SubResource( 1 )
 animation = "Side"
 
@@ -43,4 +42,5 @@ animation = "Side"
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.222473, 0 )
 shape = SubResource( 2 )
