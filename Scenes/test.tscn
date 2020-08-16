@@ -23,3 +23,7 @@ duck_path = NodePath("../Duck")
 [node name="Chick2" parent="FlockManager" instance=ExtResource( 1 )]
 position = Vector2( 139.444, 79.2101 )
 duck_path = NodePath("../Duck")
+
+[node name="Chick3" parent="FlockManager" instance=ExtResource( 1 )]
+position = Vector2( 141.226, 53.374 )
+duck_path = NodePath("../Duck")

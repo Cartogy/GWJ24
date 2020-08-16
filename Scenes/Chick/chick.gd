@@ -46,11 +46,11 @@ func change_state(state):
 
 func change_leader(chick):
 	# chick that was collided with
-	var chick_distance_away = abs((chick.position - chick.get_lead().position).length())
+	var chick_distance_away = abs((chick.position - chick.lead.position).length())
 	# current chick
 	var distance_away = abs((position - lead.position).length())
 	
-	# change leader if the chick we collided is closer
+	# change leader if the chick we collided is closer to the main leader
 	if chick_distance_away < distance_away:
 		lead = chick
 	
@@ -65,7 +65,8 @@ func _on_Area2D_body_entered(body):
 	var kin = body
 	print("Collision")
 	print(kin.name)
-	if kin.is_in_group("Chick"):
-		print("Is a chick")
-		if kin.lead == lead:
-			change_leader(kin)
+	#if kin.is_in_group("Chick"):
+	#	print("Is a chick")
+	#	if kin.lead == lead:
+	#		change_leader(kin)
+		
