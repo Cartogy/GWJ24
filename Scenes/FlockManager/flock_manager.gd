@@ -11,7 +11,7 @@ var current_chick_state
 func _ready():
 	main_duck = get_node(main_duck_path)
 	for chick in get_children():
-		chick.duck = main_duck
+		chick.set_lead(main_duck)
 		chicks.append(chick)
 		
 func _input(event):

@@ -7,11 +7,18 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Duck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 69.9716, 31.4267 )
+position = Vector2( 173.902, 117.962 )
 speed = 30
+radius = 25
 
 [node name="FlockManager" parent="." instance=ExtResource( 3 )]
 main_duck_path = NodePath("../Duck")
 
 [node name="Chick" parent="FlockManager" instance=ExtResource( 1 )]
+gap = 4
+duck_path = NodePath("../Duck")
+
+[node name="Chick2" parent="FlockManager" instance=ExtResource( 1 )]
+position = Vector2( 82.4264, -27.6979 )
+gap = 10
 duck_path = NodePath("../Duck")

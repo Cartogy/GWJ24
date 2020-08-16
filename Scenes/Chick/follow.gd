@@ -12,24 +12,42 @@ func enter():
 	pass
 
 func update(delta):
-	direction = Vector2(0, 0)
-	# Far from duck -> get closer (Needs refactoring)
-	if (calculate_goal(chick.get_duck()) - chick.position).length() > max_distance_away:
-		goal = calculate_goal(chick.get_duck())
-		direction = go_to_goal()
-	chick.move_and_slide(direction * chick.speed, Vector2(0,0))
-
-func go_to_goal():
-	# Direction for chick to move towards
-	var move_pos = (goal - chick.position).normalized()
+	var direction = direction_to_follow()
+	chick.direction = direction
+	chick.move_and_slide(chick.direction * chick.speed, Vector2(0,0))
 	
-	return move_pos
 
-func calculate_goal(duck):
-	# Get coordinate directly behind the duck.
-	var point_to_go = -(chick.get_duck().direction) + chick.get_duck().position 
+## Main function to follow lead ##
+func direction_to_follow():
+	var goal_pos = calculate_destination(chick.get_lead(), chick.get_lead().get_gap())
+	draw_destination(goal_pos)
+	var distance = calculate_distance(goal_pos, chick.position)
+	var velocity = Vector2(0,0)
+	if distance > 1:
+		velocity = calculate_direction(goal_pos, chick.position)
+	return velocity
+
+
+
+
+
+
+func calculate_destination(leader, gap):
+	var position =  leader.position - leader.direction.normalized() * leader.get_gap()	# Position behind lead
 	
-	return point_to_go
+	return position
+	
+func calculate_distance(pos_to_go, curr_pos):
+	var direction = pos_to_go - curr_pos
+	var distance = direction.length()
+	
+	return distance
+	
+func calculate_direction(pos_to_go, curr_pos):
+	return (pos_to_go - curr_pos).normalized()
+	
+func draw_destination(goal):
+	chick.set_circle_center(goal - chick.position)
 	
 func exit():
 	pass

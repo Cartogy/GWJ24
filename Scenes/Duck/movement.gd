@@ -19,7 +19,7 @@ func get_input():
 	if Input.is_action_pressed("ui_left"):
 		velocity += Vector2(-1,0)
 		
-	if velocity.x != 0 && velocity.y != 0:	# change direction when moving
+	if velocity.x != 0 || velocity.y != 0:	# change direction when moving
 		duck.change_direction(velocity)
 	
 
