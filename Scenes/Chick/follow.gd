@@ -33,7 +33,7 @@ func direction_to_follow():
 
 
 func calculate_destination(leader, gap):
-	var position =  leader.position - leader.direction.normalized() * leader.get_gap()	# Position behind lead
+	var position =  leader.position - leader.get_direction().normalized() * leader.get_gap()	# Position behind lead
 	
 	return position
 	

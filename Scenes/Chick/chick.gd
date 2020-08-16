@@ -51,7 +51,11 @@ func change_leader(chick):
 	if chick_distance_away < distance_away:
 		lead = chick
 	
+func get_direction():
+	return direction
 	
+func set_direction(val):
+	direction = val
 	
 
 func _on_Area2D_body_entered(body):

@@ -34,8 +34,9 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 10
+speed = 50
 radius = 20
+steering = 0.04
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.214184, 0.0442142 )
