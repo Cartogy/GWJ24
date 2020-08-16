@@ -1,5 +1,7 @@
 extends Node
 
+export (String) var NAME
+
 func _ready():
 	pass # Replace with function body.
 

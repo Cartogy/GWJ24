@@ -1,4 +1,4 @@
-extends Node
+extends "../StateMachine/state.gd"
 
 onready var chick = get_owner()
 
@@ -6,10 +6,12 @@ var max_distance_away = 2
 
 var goal = Vector2()
 var speed = 10
-
 var direction = Vector2()
 
-func _physics_process(delta):
+func enter():
+	pass
+
+func update(delta):
 	direction = Vector2(0, 0)
 	if (calculate_goal(chick.get_duck()) - chick.position).length() > max_distance_away:
 		goal = calculate_goal(chick.get_duck())
@@ -27,3 +29,6 @@ func calculate_goal(duck):
 	#print(point_to_go)
 	
 	return point_to_go
+	
+func exit():
+	pass

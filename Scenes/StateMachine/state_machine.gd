@@ -1,11 +1,14 @@
 extends Node
 
 var current_state
-var all_states
+var all_states = {}
+
+export (NodePath) var START_STATE
 
 func _ready():
-	for state in get_children():
-		all_states[state.name] = state
+	for child in get_children():
+		all_states[child.NAME] = child
+	initialize(START_STATE)
 	
 
 func tick(delta):
@@ -15,5 +18,9 @@ func tick(delta):
 	
 func change_state(state):
 	current_state.exit()
-	current_state = all_states[state.name]
+	current_state = all_states[state.NAME]
+	current_state.enter()
+
+func initialize(start_state):
+	current_state = all_states[get_node(start_state).NAME]
 	current_state.enter()
