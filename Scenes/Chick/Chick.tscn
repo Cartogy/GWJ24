@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Textures/Chick/chick_proto.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Chick/follow.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Chick/chick.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/StateMachine/state_machine.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Chick/stay_state.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.96775, 8.3037 )
@@ -24,3 +25,7 @@ START_STATE = NodePath("Follow")
 [node name="Follow" type="Node" parent="StateMachine"]
 script = ExtResource( 2 )
 NAME = "Follow"
+
+[node name="Stay" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+NAME = "Stay"

@@ -18,7 +18,7 @@ func tick(delta):
 	
 func change_state(state):
 	current_state.exit()
-	current_state = all_states[state.NAME]
+	current_state = all_states[state]
 	current_state.enter()
 
 func initialize(start_state):
