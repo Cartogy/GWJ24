@@ -14,11 +14,12 @@ func _ready():
 		chick.set_lead(main_duck)
 		chicks.append(chick)
 		
+# Responsible for commands
 func _input(event):
-	if event.is_action_pressed("stay_cmd"):
+	if event.is_action_pressed("stay_cmd"):		# H
 		if current_chick_state != "Stay":
 			change_chick_state("Stay")
-	elif event.is_action_pressed("follow_cmd"):
+	elif event.is_action_pressed("follow_cmd"):		# M
 		if current_chick_state != "Follow":
 			change_chick_state("Follow")
 	

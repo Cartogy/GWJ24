@@ -42,10 +42,12 @@ func change_state(state):
 	$StateMachine.change_state(state)
 
 func change_leader(chick):
+	# chick that was collided with
 	var chick_distance_away = abs((chick.position - chick.get_lead().position).length())
+	# current chick
 	var distance_away = abs((position - lead.position).length())
 	
-	# change leaedr if the chick we collided is closer
+	# change leader if the chick we collided is closer
 	if chick_distance_away < distance_away:
 		lead = chick
 	
