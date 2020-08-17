@@ -4,8 +4,8 @@ export (int) var speed
 export (int) var radius
 export (float) var steering
 
-var forward_direction = Vector2(1, 0)
-var desired_direction = Vector2.ZERO
+var forward_direction = Vector2(1, 0)	# Forward vector of the duck
+var desired_direction = Vector2.ZERO	# Direction to move towards
 
 var gap_per_chick = 2
 
@@ -39,3 +39,7 @@ func set_direction(val):
 
 func _on_DuckMovement_give_desired_direction(dir):
 	desired_direction = dir
+
+
+func _on_DuckMovement_stop_moving():
+	desired_direction = Vector2.ZERO

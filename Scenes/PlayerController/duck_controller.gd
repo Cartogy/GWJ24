@@ -1,11 +1,13 @@
 extends "../StateMachine/state.gd"
 
 signal give_desired_direction(dir)
+signal stop_moving
 
 func enter():
 	print("ENtering Duck Movement")
 	
 func exit():
+	emit_signal("stop_moving")
 	print("Leaving duck movement")
 	
 func update(delta):
