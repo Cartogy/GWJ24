@@ -1,11 +1,11 @@
 extends Node
 
-signal update_flock_center(dir, spd)
-
 export (int) var gap_per_chick
 export (float) var speed_chick
 export (NodePath) var main_duck_path
 var main_duck
+
+signal update_flock_center
 
 var chicks = []
 
@@ -50,6 +50,27 @@ func update_goals(new_goal):
 	for chick in chicks:
 		chick.goal_point = new_goal
 
-func _on_FlockManager_update_flock_center(dir, spd):
-	average_flock_center += dir * spd
+func calculate_average_center():
+	var total_chicks = 0
+	var sum = Vector2.ZERO
+	for chick in chicks:
+		sum += chick.get_global_position()
+		total_chicks += 1
+	
+	var avg_pos = sum / total_chicks
+	average_flock_center = avg_pos
+	
+	
+
+func _on_ChickHordeMovement_update_flock_center(dir, spd):
+	average_flock_center += dir.normalized() * spd
+	print(average_flock_center)
 	update_goals(average_flock_center)
+
+
+func _on_ChickHordeMovement_calculate_flock_center_average():
+	calculate_average_center()
+
+
+func _on_PlayerController_change_flock_state(state):
+	change_chick_state(state)
