@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 export (NodePath) var duck_path
 var lead	# the entity that it will follow
+var goal_point	# horde behaviour
 var gap
 
 var circle_point = Vector2()

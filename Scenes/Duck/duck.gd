@@ -5,6 +5,7 @@ export (int) var radius
 export (float) var steering
 
 var forward_direction = Vector2(1, 0)
+var desired_direction = Vector2.ZERO
 
 var gap_per_chick = 2
 
@@ -33,3 +34,8 @@ func get_direction():
 	
 func set_direction(val):
 	forward_direction = val
+
+
+
+func _on_DuckMovement_give_desired_direction(dir):
+	desired_direction = dir

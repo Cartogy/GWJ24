@@ -10,6 +10,8 @@ func _ready():
 		all_states[child.NAME] = child
 	initialize(START_STATE)
 	
+func _input(event):
+	current_state.input_handler()
 
 func tick(delta):
 	var next_state = current_state.update(delta)

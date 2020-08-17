@@ -1,5 +1,7 @@
 extends Node
 
+signal update_flock_center(dir, spd)
+
 export (int) var gap_per_chick
 export (float) var speed_chick
 export (NodePath) var main_duck_path
@@ -8,6 +10,8 @@ var main_duck
 var chicks = []
 
 var current_chick_state
+
+var average_flock_center
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,3 +46,10 @@ func change_chick_state(state):
 	current_chick_state = state
 	
 
+func update_goals(new_goal):
+	for chick in chicks:
+		chick.goal_point = new_goal
+
+func _on_FlockManager_update_flock_center(dir, spd):
+	average_flock_center += dir * spd
+	update_goals(average_flock_center)

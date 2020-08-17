@@ -4,3 +4,4 @@
 
 [node name="FlockManager" type="Node"]
 script = ExtResource( 1 )
+[connection signal="update_flock_center" from="." to="." method="_on_FlockManager_update_flock_center"]
