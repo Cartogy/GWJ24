@@ -12,6 +12,9 @@ func enter():
 	pass
 
 func update(delta):
+	if chick.get_lead() == null:
+		return "Flock"
+	
 	var direction = direction_to_follow()
 	
 

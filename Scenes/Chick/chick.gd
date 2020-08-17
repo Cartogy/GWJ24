@@ -3,13 +3,15 @@ extends KinematicBody2D
 
 export (NodePath) var duck_path
 var lead	# the entity that it will follow
+onready var goal_point = Vector2.ZERO	# horde behaviour
 var gap
+
+var MAX_DISTANCE = 10
+var speed = 2
 
 var circle_point = Vector2()
 
 var direction
-
-var speed = 10
 
 func _ready():
 	pass
@@ -40,6 +42,7 @@ func set_circle_center(point):
 	
 func _draw():
 	draw_circle(circle_point, 5, Color.red)
+	draw_circle(goal_point - position, 5, Color.pink)
 	
 func change_state(state):
 	$StateMachine.change_state(state)
@@ -70,3 +73,4 @@ func _on_Area2D_body_entered(body):
 	#	if kin.lead == lead:
 	#		change_leader(kin)
 		
+
