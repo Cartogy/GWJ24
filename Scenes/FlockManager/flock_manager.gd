@@ -22,13 +22,18 @@ func _ready():
 		chick.set_gap(gap_per_chick)
 		chick.set_speed(speed_chick)
 		
-		# Set leads for chicks
-		if previous_chick == null:
-			chick.set_lead(main_duck)
-			previous_chick = chick
+		if main_duck != null:
+			# Set leads for chicks
+			if previous_chick == null:
+				chick.set_lead(main_duck)
+				previous_chick = chick
+			else:
+				chick.set_lead(previous_chick)
+				previous_chick = chick
 		else:
-			chick.set_lead(previous_chick)
-			previous_chick = chick
+			chick.set_lead(null)
+		
+		
 		chicks.append(chick)
 		
 # Responsible for commands

@@ -17,13 +17,15 @@ func exit():
 	pass
 	
 func update(delta):
-	pass
+	dir_v = get_input().normalized()
+	if dir_v != Vector2.ZERO:
+		emit_signal("update_flock_center", dir_v, player.speed)
 
 func input_handler():
 	
-	dir_v = get_input()
-	if dir_v != Vector2.ZERO:
-		emit_signal("update_flock_center", dir_v, player.speed)
+	#dir_v = get_input()
+	pass
+	
 
 func get_input() -> Vector2:
 	var velocity = Vector2.ZERO
@@ -35,5 +37,7 @@ func get_input() -> Vector2:
 		velocity += Vector2(1,0)
 	if Input.is_action_pressed("ui_left"):
 		velocity += Vector2(-1,0)
+		
+	print(velocity)
 		
 	return velocity

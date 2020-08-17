@@ -8,7 +8,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerController" parent="." instance=ExtResource( 4 )]
-speed = 2.0
+speed = 0.5
 
 [node name="Duck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 173.902, 117.962 )

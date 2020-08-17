@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/PlayerController/PlayerController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Chick/Chick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/FlockManager/FlockManager.tscn" type="PackedScene" id=3]
+
+[node name="ChickTest" type="Node2D"]
+
+[node name="PlayerController" parent="." instance=ExtResource( 1 )]
+
+[node name="StateMachine" parent="PlayerController" index="0"]
+START_STATE = NodePath("ChickHordeMovement")
+
+[node name="FlockManager" parent="." instance=ExtResource( 3 )]
+
+[node name="Chick" parent="FlockManager" instance=ExtResource( 2 )]
+position = Vector2( 268.197, 149.831 )
+
+[node name="Chick2" parent="FlockManager" instance=ExtResource( 2 )]
+position = Vector2( 184.292, 104.132 )
+
+[node name="Chick3" parent="FlockManager" instance=ExtResource( 2 )]
+position = Vector2( 265.701, 59.4641 )
+[connection signal="change_flock_state" from="PlayerController" to="FlockManager" method="_on_PlayerController_change_flock_state"]
+[connection signal="calculate_flock_center_average" from="PlayerController/StateMachine/ChickHordeMovement" to="FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
+[connection signal="update_flock_center" from="PlayerController/StateMachine/ChickHordeMovement" to="FlockManager" method="_on_ChickHordeMovement_update_flock_center"]
+
+[editable path="PlayerController"]
