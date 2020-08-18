@@ -1,11 +1,10 @@
-extends KinematicBody2D
+extends "../ScriptClasses/vector_movement.gd"
+
+class_name Duck
 
 var speed = 30	# default
 export (int) var radius
 export (float) var steering
-
-var forward_direction = Vector2(1, 0)	# Forward vector of the duck
-var desired_direction = Vector2.ZERO	# Direction to move towards
 
 func _ready():
 	if steering < 0.0:
@@ -14,9 +13,9 @@ func _ready():
 		steering = 1.0
 
 func change_direction(dir):
-	forward_direction = dir
+	set_forward_v(dir)
 	
-	$ForwardRay.set_point_position(1, forward_direction * 4)
+	$ForwardRay.set_point_position(1, get_forward_v() * 4)
 
 func _process(delta):
 	update()	# Draw Circle
@@ -25,22 +24,16 @@ func get_gap():
 	return radius
 	
 func _draw():
-	draw_circle(forward_direction * 10, 1, Color.green)
-
-func get_direction():
-	return forward_direction
-	
-func set_direction(val):
-	forward_direction = val
+	draw_circle(get_forward_v() * 10, 1, Color.green)
 
 
 
 func _on_DuckMovement_give_desired_direction(dir):
-	desired_direction = dir
+	set_desired_direction_v(dir)
 
 
 func _on_DuckMovement_stop_moving():
-	desired_direction = Vector2.ZERO
+	set_desired_direction_v(Vector2.ZERO)
 
 
 func _on_PlayerController_change_duck_speed(spd):

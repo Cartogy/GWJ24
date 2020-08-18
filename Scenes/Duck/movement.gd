@@ -9,7 +9,7 @@ func _ready():
 
 func _physics_process(delta):
 	# Calculate new forward vector
-	var forward = move_forward(duck.forward_direction, duck.desired_direction)
+	var forward = move_forward(duck.get_forward_v(), duck.get_desired_direction_v())
 	
 	duck.move_and_slide(forward * duck.speed,Vector2(1,0))
 	
@@ -22,4 +22,5 @@ func move_forward(forward_v, desired_v):
 			i_v = lerp(forward_v, desired_v, duck.steering)
 			duck.change_direction(i_v)
 	return i_v
+	
 	

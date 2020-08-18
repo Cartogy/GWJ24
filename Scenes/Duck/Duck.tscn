@@ -25,7 +25,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2.22383, 2.92996 )
+extents = Vector2( 2.25194, 2.03848 )
 
 [node name="Duck" type="KinematicBody2D"]
 position = Vector2( 141.54, 164.481 )

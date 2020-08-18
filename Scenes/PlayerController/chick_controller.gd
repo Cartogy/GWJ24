@@ -40,6 +40,5 @@ func get_input() -> Vector2:
 	if Input.is_action_pressed("ui_left"):
 		velocity += Vector2(-1,0)
 		
-	print(velocity)
 		
 	return velocity

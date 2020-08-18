@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Box",
+"language": "GDScript",
+"path": "res://Scenes/Box/box.gd"
+}, {
+"base": "",
+"class": "Chick",
+"language": "GDScript",
+"path": "res://Scenes/Chick/chick.gd"
+}, {
+"base": "",
+"class": "Duck",
+"language": "GDScript",
+"path": "res://Scenes/Duck/duck.gd"
+}, {
 "base": "Node2D",
 "class": "Switch",
 "language": "GDScript",
 "path": "res://Scenes/Switch/switch.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "VectorMovement",
+"language": "GDScript",
+"path": "res://Scenes/ScriptClasses/vector_movement.gd"
 } ]
 _global_script_class_icons={
-"Switch": ""
+"Box": "",
+"Chick": "",
+"Duck": "",
+"Switch": "",
+"VectorMovement": ""
 }
 
 [application]

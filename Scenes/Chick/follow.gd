@@ -6,7 +6,7 @@ var max_distance_away = 2
 
 var goal = Vector2()
 
-var direction = Vector2()
+#var direction = Vector2()
 
 func enter():
 	pass
@@ -22,7 +22,7 @@ func update(delta):
 	
 	# change direction of chick if moving.
 	if direction != Vector2.ZERO:
-		chick.direction = direction
+		chick.set_forward_v(direction)
 	
 
 ## Main function to follow lead ##
@@ -42,7 +42,7 @@ func direction_to_follow():
 
 
 func calculate_destination(leader, gap):
-	var position =  leader.get_global_position() - leader.get_direction().normalized() * leader.get_gap()	# Position behind lead
+	var position =  leader.get_global_position() - leader.get_forward_v().normalized() * leader.get_gap()	# Position behind lead
 	
 	return position
 	

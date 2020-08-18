@@ -1,8 +1,9 @@
-extends KinematicBody2D
+extends "../ScriptClasses/vector_movement.gd"
 
+class_name Chick
 
 export (NodePath) var duck_path
-var lead	# the entity that it will follow
+var lead : VectorMovement	# the entity that it will follow
 onready var goal_point = Vector2.ZERO	# horde behaviour
 var gap
 
@@ -10,8 +11,6 @@ var MAX_DISTANCE = 10	# Distance to avoid chicks
 var speed = 2 # Default
 
 var circle_point = Vector2()
-
-var direction
 
 func _ready():
 	pass
@@ -56,13 +55,6 @@ func change_leader(chick):
 	# change leader if the chick we collided is closer to the main leader
 	if chick_distance_away < distance_away:
 		lead = chick
-	
-func get_direction():
-	return direction
-	
-func set_direction(val):
-	direction = val
-	
 
 func _on_Area2D_body_entered(body):
 	var kin = body
