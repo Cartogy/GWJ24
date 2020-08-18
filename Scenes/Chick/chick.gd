@@ -6,8 +6,8 @@ var lead	# the entity that it will follow
 onready var goal_point = Vector2.ZERO	# horde behaviour
 var gap
 
-var MAX_DISTANCE = 10
-var speed = 2
+var MAX_DISTANCE = 10	# Distance to avoid chicks
+var speed = 2 # Default
 
 var circle_point = Vector2()
 
@@ -66,8 +66,7 @@ func set_direction(val):
 
 func _on_Area2D_body_entered(body):
 	var kin = body
-	print("Collision")
-	print(kin.name)
+
 	#if kin.is_in_group("Chick"):
 	#	print("Is a chick")
 	#	if kin.lead == lead:

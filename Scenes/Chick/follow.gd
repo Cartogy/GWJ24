@@ -5,7 +5,7 @@ onready var chick = get_owner()
 var max_distance_away = 2
 
 var goal = Vector2()
-var speed = 30
+
 var direction = Vector2()
 
 func enter():

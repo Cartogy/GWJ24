@@ -2,8 +2,6 @@ extends Node2D
 
 # Responsible for input from the player to play the game
 
-export (float) var speed
-
 signal change_flock_state(state)
 signal change_duck_speed(spd)
 signal change_chick_speed(spd)

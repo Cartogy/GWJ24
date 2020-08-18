@@ -1,13 +1,11 @@
 extends KinematicBody2D
 
-var speed = 30
+var speed = 30	# default
 export (int) var radius
 export (float) var steering
 
 var forward_direction = Vector2(1, 0)	# Forward vector of the duck
 var desired_direction = Vector2.ZERO	# Direction to move towards
-
-var gap_per_chick = 2
 
 func _ready():
 	if steering < 0.0:
