@@ -13,6 +13,7 @@ func _physics_process(delta):
 	
 	duck.move_and_slide(forward * duck.speed,Vector2(1,0))
 	
+# interpolate forward vector and desired direction to get vector in between
 func move_forward(forward_v, desired_v):
 	var i_v = Vector2(0,0)
 	if desired_v != Vector2(0,0):

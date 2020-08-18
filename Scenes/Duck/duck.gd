@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed
+var speed = 30
 export (int) var radius
 export (float) var steering
 
@@ -43,3 +43,7 @@ func _on_DuckMovement_give_desired_direction(dir):
 
 func _on_DuckMovement_stop_moving():
 	desired_direction = Vector2.ZERO
+
+
+func _on_PlayerController_change_duck_speed(spd):
+	speed = spd

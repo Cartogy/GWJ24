@@ -1,7 +1,9 @@
 extends "../StateMachine/state.gd"
 
-signal give_desired_direction(dir)
-signal stop_moving
+onready var player = get_owner()
+
+signal give_desired_direction(dir)		# Connceted to Duck
+signal stop_moving							# Connected to Duck
 
 func enter():
 	print("ENtering Duck Movement")

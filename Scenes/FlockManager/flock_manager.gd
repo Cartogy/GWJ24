@@ -36,19 +36,12 @@ func _ready():
 		
 		chicks.append(chick)
 		
-# Responsible for commands
-func _input(event):
-	if event.is_action_pressed("stay_cmd"):		# H
-		if current_chick_state != "Stay":
-			change_chick_state("Stay")
-	elif event.is_action_pressed("follow_cmd"):		# M
-		if current_chick_state != "Follow":
-			change_chick_state("Follow")
 	
 func change_chick_state(state):
-	for chick in chicks:
-		chick.change_state(state)
-	current_chick_state = state
+	if current_chick_state != state:
+		for chick in chicks:
+			chick.change_state(state)
+		current_chick_state = state
 	
 
 func update_goals(new_goal):
@@ -65,6 +58,9 @@ func calculate_average_center():
 	var avg_pos = sum / total_chicks
 	average_flock_center = avg_pos
 	
+func change_flock_speed(spd):
+	for chick in chicks:
+		chick.set_speed(spd)
 	
 
 func _on_ChickHordeMovement_update_flock_center(dir, spd):
@@ -79,3 +75,7 @@ func _on_ChickHordeMovement_calculate_flock_center_average():
 
 func _on_PlayerController_change_flock_state(state):
 	change_chick_state(state)
+
+
+func _on_PlayerController_change_chick_speed(spd):
+	change_flock_speed(spd)
