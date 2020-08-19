@@ -3,6 +3,9 @@ extends "../StateMachine/state.gd"
 onready var chick = get_owner()
 
 var velocity = Vector2.ZERO
+var avg_center : Vector2 = Vector2.ZERO
+
+var avg_center_method : bool = true
 
 func enter():
 	pass
@@ -11,9 +14,17 @@ func exit():
 	pass
 	
 func update(delta):
-	if chick.goal_point != null:
-		velocity = to_goal(chick.get_global_position(), chick.goal_point, chick.MAX_DISTANCE, chick.speed)
+	
+	# Apply follow goal method for flock
+	if avg_center_method == false:
+		if chick.goal_point != null:
+			velocity = to_goal(chick.get_global_position(), chick.goal_point, chick.MAX_DISTANCE, chick.speed)
 		#chick.set_desired_direction_v(velocity)
+	else:	# Apply avg_center method for flock
+		var center_v = (avg_center - chick.get_global_position()) * 0.7
+		velocity = chick.get_desired_direction_v() + center_v
+		
+		
 	chick.move_and_slide(velocity)
 	if chick.get_slide_count() > 0:
 		var box = chick.get_slide_collision(0).collider as Box

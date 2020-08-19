@@ -13,6 +13,7 @@ var chicks = []
 var current_chick_state
 
 var average_flock_center
+var goal = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +38,12 @@ func _ready():
 		
 		chicks.append(chick)
 		
-	
+
+func _physics_process(delta):
+	average_flock_center = calculate_average_center()
+	for c in chicks:
+		c.set_avg_center(average_flock_center)
+
 func change_chick_state(state):
 	if current_chick_state != state:
 		for chick in chicks:
@@ -47,10 +53,12 @@ func change_chick_state(state):
 
 func update_goals_dir(new_goal, dir):
 	for chick in chicks:
-		chick.goal_point = new_goal
+		#chick.goal_point = new_goal
 		chick.set_desired_direction_v(dir)
+		#chick.set_avg_center(average_flock_center)
+		
 
-func calculate_average_center():
+func calculate_average_center() -> Vector2:
 	var total_chicks = 0
 	var sum = Vector2.ZERO
 	for chick in chicks:
@@ -58,7 +66,7 @@ func calculate_average_center():
 		total_chicks += 1
 	
 	var avg_pos = sum / total_chicks
-	average_flock_center = avg_pos
+	return avg_pos
 	
 	
 	
@@ -69,9 +77,11 @@ func change_flock_speed(spd):
 	
 
 func _on_ChickHordeMovement_update_flock_center(dir, spd):
-	average_flock_center += dir.normalized() * spd
+	average_flock_center = calculate_average_center()
+	goal += dir.normalized() * spd
 	emit_signal("update_entity_position", average_flock_center)
-	update_goals_dir(average_flock_center, dir)
+	update_goals_dir(goal, dir.normalized() * 100)
+	
 
 
 func _on_ChickHordeMovement_calculate_flock_center_average():

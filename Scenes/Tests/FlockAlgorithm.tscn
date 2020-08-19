@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Tests/Boid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tests/boid_manager.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="BoidManager" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="BoidManager"]
+__meta__ = {
+"_gizmo_extents_": 3.0
+}
+
+[node name="Sprite" type="Sprite" parent="BoidManager/Position2D"]
+position = Vector2( -0.420469, -0.420446 )
+scale = Vector2( 0.251079, 0.224801 )
+texture = ExtResource( 3 )
 
 [node name="Boid" parent="BoidManager" instance=ExtResource( 1 )]
 position = Vector2( 113.137, 192.333 )

@@ -20,8 +20,8 @@ func exit():
 	
 func update(delta):
 	dir_v = get_input().normalized()
-	if dir_v != Vector2.ZERO:
-		emit_signal("update_flock_center", dir_v, data.chick_center_speed)
+	
+	emit_signal("update_flock_center", dir_v, data.chick_center_speed)
 
 func input_handler():
 	

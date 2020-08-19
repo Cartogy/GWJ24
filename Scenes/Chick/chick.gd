@@ -56,6 +56,9 @@ func change_leader(chick):
 	if chick_distance_away < distance_away:
 		lead = chick
 
+func set_avg_center(val):
+	$StateMachine/Flock.avg_center = val
+
 func _on_Area2D_body_entered(body):
 	var kin = body
 

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Boid
+
 export (float) var AVOID_DISTANCE
 export (float) var speed
 
@@ -15,19 +17,27 @@ var velocity = Vector2.ZERO
 
 var avg_group_distance = Vector2.ZERO
 
+var desired_direction_v = Vector2.ZERO
+var group_avg : Vector2
+
 func _ready():
 	pass
 
 func _input(event):
-	if event.is_action_pressed('left_click'):
-		goal = get_global_mouse_position()
+	pass
+	#if event.is_action_pressed('left_click'):
+	#	goal = get_global_mouse_position()
 
 func _physics_process(delta):
 	
-	if goal != null:
-		velocity = to_goal(get_global_position(), goal)
-
-	move_and_slide(velocity)
+	#if goal != null:
+	#	velocity = to_goal(get_global_position(), goal)
+	var center_v = (group_avg - get_global_position()) * 0.7
+	
+	
+	move_and_slide(desired_direction_v + center_v)
+	
+	#move_and_slide(center_v)
 
 func _process(delta):
 	update()
