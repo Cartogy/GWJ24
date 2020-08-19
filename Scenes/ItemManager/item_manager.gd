@@ -15,6 +15,7 @@ func _input(event):
 	if Input.is_action_pressed("drop_item"):
 		if cur_entity_item.has_item:
 			activate_item()
+		
 	
 func _physics_process(delta):
 	if cur_entity_item.has_item:
@@ -53,7 +54,18 @@ func pickup_item(item):
 		print(cur_entity_item.name)
 		deactivate_item(item)
 		
+func set_entity_lock(lock):
+	cur_entity_item.set_lock(lock)
 
+func unlock_lock():
+	var item = cur_entity_item.get_current_item()
+	var lock = cur_entity_item.get_lock()
+	
+	if item && lock:
+		if lock.apply_key_item(item):
+			cur_entity_item.set_current_item(null)
+			cur_entity_item.has_item = false
+			cur_entity_item.set_lock(null)
 
 func _on_PlayerController_change_item_entity(state):
 	set_entity_state(state)
@@ -74,3 +86,15 @@ func _on_Item_pick_up(item):
 
 func _on_Item_notify_item_manager(item):
 	pickup_item(item)
+
+
+func _on_Lock_notify_entity_is_near(lock):
+	set_entity_lock(lock)
+
+
+func _on_Lock_notify_entity_left():
+	cur_entity_item.set_lock(null)
+
+
+func _on_PlayerController_unlocking():
+	unlock_lock()

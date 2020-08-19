@@ -5,6 +5,10 @@ export (float) var towards
 var boids = []
 var average_center = Vector2.ZERO
 
+var t = 0
+
+var interpolate
+
 func _ready():
 	
 	for child in get_children():
@@ -30,13 +34,17 @@ func _physics_process(delta):
 	var avg_cntr = calc_avg_center()
 	$Position2D.position = avg_cntr
 	var v_dir = dir  * 50
+	
+	t += delta * 0.4	
+	
 	var goal_from_avg_center = avg_cntr + v_dir
+	var interpolate = avg_cntr.linear_interpolate(goal_from_avg_center, 0.9)
+	
 	average_center += dir * 2
 	var goal_v = average_center + (dir * 2)
-	#update_boids(average_center)
+
 	update_boids(goal_from_avg_center)
-	#update_boids_direction(dir * 130)
-	#update_boids_avg_cntr(avg_cnr)
+
 	
 	
 func update_boids(new_goal):

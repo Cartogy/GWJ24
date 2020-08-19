@@ -55,7 +55,6 @@ func update_goals_dir(new_goal, dir):
 	for chick in chicks:
 		chick.goal_point = new_goal
 		chick.set_desired_direction_v(dir)
-		#chick.set_avg_center(average_flock_center)
 		
 
 func calculate_average_center() -> Vector2:

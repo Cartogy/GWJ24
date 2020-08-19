@@ -4,6 +4,7 @@ var has_item : bool
 
 var current_item : Item
 var entity_position : Vector2
+var near_lock : Lock
 
 func _ready():
 	entity_position = Vector2.ZERO
@@ -28,3 +29,13 @@ func get_entity_position() -> Vector2:
 
 func update_item_position():
 	current_item.global_position = entity_position
+
+func set_lock(val):
+	near_lock = val
+	
+func get_lock():
+	if near_lock != null:
+		return near_lock
+	
+func remove_lock():
+	near_lock = null

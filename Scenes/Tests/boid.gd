@@ -20,8 +20,10 @@ var avg_group_distance = Vector2.ZERO
 var desired_direction_v = Vector2.ZERO
 var group_avg : Vector2
 
+var forward_v
+
 func _ready():
-	pass
+	forward_v = Vector2(1,0)
 
 func _input(event):
 	pass
@@ -33,9 +35,14 @@ func _physics_process(delta):
 	if goal != null:
 		velocity = to_goal(get_global_position(), goal)
 
+	var i_v = Vector2(0,0)
+	if velocity != Vector2(0,0):
+		i_v = forward_v
+		if velocity.x != 0 || velocity.y != 0:
+			i_v = lerp(forward_v, velocity, 0.5)
+			forward_v = i_v
 	
-	
-	move_and_slide(velocity)
+	move_and_slide(i_v)
 	
 	#move_and_slide(center_v)
 
@@ -48,6 +55,7 @@ func to_goal(cur_pos, goal_pos) -> Vector2:
 	var dir_v
 	if v.length() > MAX_DISTANCE:
 		v = v.normalized()
+		
 		dir_v = v * speed
 	else:
 		dir_v = Vector2.ZERO
