@@ -8,6 +8,9 @@ signal change_chick_speed(spd)
 
 signal change_item_entity(state)
 
+signal deactivate_duck
+signal activate_duck
+
 var cur_state = ""	# For chick commands
 
 func _ready():
@@ -31,12 +34,15 @@ func get_input():
 		emit_signal("change_flock_state", "Stay")
 		cur_state = "DuckController"
 		emit_signal("change_item_entity", "Duck")
+		emit_signal("activate_duck")
+		
 	elif Input.is_action_pressed("chick_cmd") && cur_state != "ChickController":		#T
 		$StateMachine.change_state("ChickController")
 		emit_signal("change_flock_state", "Flock")
 		emit_signal("change_chick_speed", $Data.chick_horde_speed)
 		cur_state = "ChickController"
 		emit_signal("change_item_entity", "Flock")
+		emit_signal("deactivate_duck")
 
 func _physics_process(delta):
 	get_input()

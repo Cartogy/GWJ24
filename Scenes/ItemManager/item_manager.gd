@@ -22,14 +22,18 @@ func _physics_process(delta):
 	
 func set_entity_state(state):
 	if state == "Duck":
+		print("Duck entity")
 		cur_entity_state = Entity_State.DUCK
 		cur_entity_item = $DuckItems
 	elif state == "Flock":
+		print("Flock entity")
 		cur_entity_state = Entity_State.FLOCK
-		cur_entity_item = $FlockItems
+		cur_entity_item = $FlockItem
 
 func update_entity_position(pos):
 	cur_entity_item.set_entity_position(pos)
+	print("Entityi Position")
+	print(pos)
 
 func deactivate_item(item):
 	item.set_physics_process(false)
@@ -44,7 +48,9 @@ func activate_item():
 		
 func pickup_item(item):
 	if cur_entity_item.has_item == false:
+		print(cur_entity_state)
 		cur_entity_item.set_current_item(item)
+		print(cur_entity_item.name)
 		deactivate_item(item)
 		
 
@@ -58,6 +64,7 @@ func _on_Duck_update_position_entity(pos):
 
 
 func _on_FlockManager_update_entity_position(pos):
+	
 	update_entity_position(pos)
 
 func _on_Item_pick_up(item):

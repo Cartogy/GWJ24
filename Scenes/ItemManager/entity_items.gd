@@ -5,6 +5,9 @@ var has_item : bool
 var current_item : Item
 var entity_position : Vector2
 
+func _ready():
+	entity_position = Vector2.ZERO
+
 func set_current_item(val: Item):
 	if has_item == false:
 		current_item = val

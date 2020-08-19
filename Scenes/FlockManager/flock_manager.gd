@@ -60,7 +60,8 @@ func calculate_average_center():
 	var avg_pos = sum / total_chicks
 	average_flock_center = avg_pos
 	
-	emit_signal("update_entity_position", average_flock_center)
+	
+	
 	
 func change_flock_speed(spd):
 	for chick in chicks:
@@ -69,6 +70,7 @@ func change_flock_speed(spd):
 
 func _on_ChickHordeMovement_update_flock_center(dir, spd):
 	average_flock_center += dir.normalized() * spd
+	emit_signal("update_entity_position", average_flock_center)
 	update_goals_dir(average_flock_center, dir)
 
 

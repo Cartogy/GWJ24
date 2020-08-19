@@ -32,3 +32,8 @@ func move_forward(forward_v, desired_v):
 func update_position_entity(position):
 	duck.emit_signal("update_position_entity", position)
 	
+func deactivate_movement():
+	set_physics_process(false)
+	
+func activate_movement():
+	set_physics_process(true)

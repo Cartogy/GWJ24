@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/DuckChickControl.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/ItemManager/ItemManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Items/Lock/Lock.tscn" type="PackedScene" id=5]
+
+[node name="ExampleLevel" type="Node2D"]
+
+[node name="Switch" parent="." instance=ExtResource( 2 )]
+position = Vector2( 260.804, 117.173 )
+scale = Vector2( 4, 4 )
+
+[node name="DuckChickController" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.25992, 0 )
+
+[node name="DoorEffect" parent="." instance=ExtResource( 3 )]
+position = Vector2( 207.568, 184.875 )
+scale = Vector2( 4, 4 )
+switch_path = NodePath("../Switch")
+
+[node name="ItemManager" parent="." instance=ExtResource( 4 )]
+
+[node name="Item" parent="." instance=ExtResource( 5 )]
+position = Vector2( 113.461, 180.203 )
+[connection signal="change_item_entity" from="DuckChickController/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
+[connection signal="give_desired_direction" from="DuckChickController/PlayerController/StateMachine/DuckMovement" to="DuckChickController/Duck" method="_on_DuckMovement_give_desired_direction"]
+[connection signal="stop_moving" from="DuckChickController/PlayerController/StateMachine/DuckMovement" to="DuckChickController/Duck" method="_on_DuckMovement_stop_moving"]
+[connection signal="calculate_flock_center_average" from="DuckChickController/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickController/FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
+[connection signal="update_flock_center" from="DuckChickController/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickController/FlockManager" method="_on_ChickHordeMovement_update_flock_center"]
+[connection signal="update_position_entity" from="DuckChickController/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
+[connection signal="update_entity_position" from="DuckChickController/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
+[connection signal="notify_item_manager" from="Item" to="ItemManager" method="_on_Item_notify_item_manager"]
+
+[editable path="DuckChickController"]
+
+[editable path="DuckChickController/PlayerController"]

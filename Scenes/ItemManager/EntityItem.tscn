@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/ItemManager/entity_items.gd" type="Script" id=1]
+
+[node name="EntityItem" type="Node"]
+script = ExtResource( 1 )

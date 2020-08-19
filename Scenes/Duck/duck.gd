@@ -40,3 +40,11 @@ func _on_DuckMovement_stop_moving():
 
 func _on_PlayerController_change_duck_speed(spd):
 	speed = spd
+
+
+func _on_PlayerController_deactivate_duck():
+	$Movement.deactivate_movement()
+
+
+func _on_PlayerController_activate_duck():
+	$Movement.activate_movement()

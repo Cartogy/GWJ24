@@ -35,9 +35,11 @@ duck_path = NodePath("../Duck")
 [node name="Chick3" parent="FlockManager" instance=ExtResource( 1 )]
 position = Vector2( 141.226, 53.374 )
 duck_path = NodePath("../Duck")
+[connection signal="activate_duck" from="PlayerController" to="Duck" method="_on_PlayerController_activate_duck"]
 [connection signal="change_chick_speed" from="PlayerController" to="FlockManager" method="_on_PlayerController_change_chick_speed"]
 [connection signal="change_duck_speed" from="PlayerController" to="Duck" method="_on_PlayerController_change_duck_speed"]
 [connection signal="change_flock_state" from="PlayerController" to="FlockManager" method="_on_PlayerController_change_flock_state"]
+[connection signal="deactivate_duck" from="PlayerController" to="Duck" method="_on_PlayerController_deactivate_duck"]
 [connection signal="give_desired_direction" from="PlayerController/StateMachine/DuckMovement" to="Duck" method="_on_DuckMovement_give_desired_direction"]
 [connection signal="stop_moving" from="PlayerController/StateMachine/DuckMovement" to="Duck" method="_on_DuckMovement_stop_moving"]
 [connection signal="calculate_flock_center_average" from="PlayerController/StateMachine/ChickHordeMovement" to="FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
