@@ -36,8 +36,9 @@ func update_entity_position(pos):
 	print("Entityi Position")
 	print(pos)
 
-func deactivate_item(item):
+func deactivate_item(item: Item):
 	item.set_physics_process(false)
+	
 	cur_entity_item.current_item = item
 	cur_entity_item.has_item = true
 	
@@ -45,11 +46,13 @@ func activate_item():
 	cur_entity_item.current_item.set_physics_process(true)
 	cur_entity_item.current_item.global_position = cur_entity_item.get_entity_position()
 	cur_entity_item.has_item = false
+	cur_entity_item.current_item.get_node("CollisionShape2D").set_deferred("disabled", false)	# Let the item have and effect on switches
 	cur_entity_item.current_item = null
 		
 func pickup_item(item):
 	if cur_entity_item.has_item == false:
 		print(cur_entity_state)
+		item.get_node("CollisionShape2D").set_deferred("disabled", true)	# Prevents collision between duck and item
 		cur_entity_item.set_current_item(item)
 		print(cur_entity_item.name)
 		deactivate_item(item)
