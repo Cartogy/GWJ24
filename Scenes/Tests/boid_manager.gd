@@ -27,14 +27,16 @@ func get_input() -> Vector2:
 		
 func _physics_process(delta):
 	var dir = get_input().normalized()
-	var avg_cnr = calc_avg_center()
-	$Position2D.position = avg_cnr
+	var avg_cntr = calc_avg_center()
+	$Position2D.position = avg_cntr
+	var v_dir = dir  * 50
+	var goal_from_avg_center = avg_cntr + v_dir
 	average_center += dir * 2
 	var goal_v = average_center + (dir * 2)
 	#update_boids(average_center)
-	#update_boids(goal_v)
-	update_boids_direction(dir * 130)
-	update_boids_avg_cntr(avg_cnr)
+	update_boids(goal_from_avg_center)
+	#update_boids_direction(dir * 130)
+	#update_boids_avg_cntr(avg_cnr)
 	
 	
 func update_boids(new_goal):

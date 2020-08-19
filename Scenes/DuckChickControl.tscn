@@ -13,6 +13,7 @@
 duck_attached_speed = 25.0
 duck_dettached_speed = 50.0
 chick_horde_speed = 80.0
+chick_center_speed = 40.0
 
 [node name="Duck" parent="." instance=ExtResource( 2 )]
 position = Vector2( 173.902, 117.962 )

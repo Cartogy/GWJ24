@@ -53,7 +53,7 @@ func change_chick_state(state):
 
 func update_goals_dir(new_goal, dir):
 	for chick in chicks:
-		#chick.goal_point = new_goal
+		chick.goal_point = new_goal
 		chick.set_desired_direction_v(dir)
 		#chick.set_avg_center(average_flock_center)
 		
@@ -78,7 +78,8 @@ func change_flock_speed(spd):
 
 func _on_ChickHordeMovement_update_flock_center(dir, spd):
 	average_flock_center = calculate_average_center()
-	goal += dir.normalized() * spd
+	var goal_direction = dir.normalized() * spd
+	goal = average_flock_center + goal_direction
 	emit_signal("update_entity_position", average_flock_center)
 	update_goals_dir(goal, dir.normalized())
 	

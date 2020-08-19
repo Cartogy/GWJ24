@@ -30,12 +30,12 @@ func _input(event):
 
 func _physics_process(delta):
 	
-	#if goal != null:
-	#	velocity = to_goal(get_global_position(), goal)
-	var center_v = (group_avg - get_global_position()) * 0.7
+	if goal != null:
+		velocity = to_goal(get_global_position(), goal)
+
 	
 	
-	move_and_slide(desired_direction_v + center_v)
+	move_and_slide(velocity)
 	
 	#move_and_slide(center_v)
 
