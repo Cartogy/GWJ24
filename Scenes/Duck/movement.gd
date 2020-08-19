@@ -9,7 +9,7 @@ func _ready():
 
 func _physics_process(delta):
 	# Calculate new forward vector
-	var forward = move_forward(duck.get_forward_v(), duck.get_desired_direction_v())
+	var forward = move_forward(duck.get_forward_v(), duck.get_desired_direction_v(), duck, duck.steering)
 	
 	duck.move_and_slide(forward * duck.speed,Vector2(1,0))
 	update_position_entity(duck.get_global_position())	# Tell the Item Manager to update my position
@@ -20,13 +20,13 @@ func _physics_process(delta):
 		
 	
 # interpolate forward vector and desired direction to get vector in between
-func move_forward(forward_v, desired_v):
+func move_forward(forward_v, desired_v, entity, steer):
 	var i_v = Vector2(0,0)
 	if desired_v != Vector2(0,0):
 		i_v = forward_v
 		if desired_v.x != 0 || desired_v.y != 0:
-			i_v = lerp(forward_v, desired_v, duck.steering)
-			duck.change_direction(i_v)
+			i_v = lerp(forward_v, desired_v, steer)
+			entity.change_direction(i_v)
 	return i_v
 	
 func update_position_entity(position):

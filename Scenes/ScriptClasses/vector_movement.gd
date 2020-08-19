@@ -16,3 +16,15 @@ func get_desired_direction_v() -> Vector2:
 	
 func set_desired_direction_v(val: Vector2):
 	desired_direction_v = val
+
+func change_direction(dir):
+	pass
+
+func move_forward(forward_v, desired_v, entity, steer) -> Vector2:
+	var i_v = Vector2(0,0)
+	if desired_v != Vector2(0,0):
+		i_v = forward_v
+		if desired_v.x != 0 || desired_v.y != 0:
+			i_v = lerp(forward_v, desired_v, steer)
+			entity.change_direction(i_v)
+	return i_v

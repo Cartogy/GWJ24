@@ -46,6 +46,9 @@ func _draw():
 func change_state(state):
 	$StateMachine.change_state(state)
 
+func change_direction(dir):
+	set_forward_v(dir)
+
 func change_leader(chick):
 	# chick that was collided with
 	var chick_distance_away = abs((chick.position - chick.lead.position).length())
