@@ -12,6 +12,12 @@ func _physics_process(delta):
 	var forward = move_forward(duck.get_forward_v(), duck.get_desired_direction_v())
 	
 	duck.move_and_slide(forward * duck.speed,Vector2(1,0))
+	update_position_entity(duck.get_global_position())	# Tell the Item Manager to update my position
+	if duck.get_slide_count() > 0:
+		var box = duck.get_slide_collision(0).collider as Box
+		if box:
+			box.apply_force(duck.get_desired_direction_v(), duck.position)
+		
 	
 # interpolate forward vector and desired direction to get vector in between
 func move_forward(forward_v, desired_v):
@@ -23,4 +29,6 @@ func move_forward(forward_v, desired_v):
 			duck.change_direction(i_v)
 	return i_v
 	
+func update_position_entity(position):
+	duck.emit_signal("update_position_entity", position)
 	

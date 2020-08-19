@@ -6,6 +6,7 @@ export (NodePath) var main_duck_path
 var main_duck
 
 signal update_flock_center
+signal update_entity_position(pos)
 
 var chicks = []
 
@@ -58,6 +59,8 @@ func calculate_average_center():
 	
 	var avg_pos = sum / total_chicks
 	average_flock_center = avg_pos
+	
+	emit_signal("update_entity_position", average_flock_center)
 	
 func change_flock_speed(spd):
 	for chick in chicks:

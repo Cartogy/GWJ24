@@ -2,6 +2,8 @@ extends "../ScriptClasses/vector_movement.gd"
 
 class_name Duck
 
+signal update_position_entity(pos)
+
 var speed = 30	# default
 export (int) var radius
 export (float) var steering
