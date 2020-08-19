@@ -22,7 +22,7 @@ func update(delta):
 		#chick.set_desired_direction_v(velocity)
 	else:	# Apply avg_center method for flock
 		var center_v = (avg_center - chick.get_global_position()) * 0.7
-		velocity = chick.get_desired_direction_v() + center_v
+		velocity = (chick.get_desired_direction_v() * chick.speed) + center_v
 		
 		
 	chick.move_and_slide(velocity)

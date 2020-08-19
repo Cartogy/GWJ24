@@ -80,7 +80,7 @@ func _on_ChickHordeMovement_update_flock_center(dir, spd):
 	average_flock_center = calculate_average_center()
 	goal += dir.normalized() * spd
 	emit_signal("update_entity_position", average_flock_center)
-	update_goals_dir(goal, dir.normalized() * 100)
+	update_goals_dir(goal, dir.normalized())
 	
 
 
