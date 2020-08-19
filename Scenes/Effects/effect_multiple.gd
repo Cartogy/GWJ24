@@ -12,8 +12,10 @@ func _ready():
 	state = State.DEACTIVATED
 	var index = 0
 	for path in switch_path:
-		switches.append(get_node(path))
-		switches.set_effect(self)
+		var switch = get_node(path)
+		switch.set_effect(self)
+		switches.append(switch)
+		
 		index += 1
 	total_switches = index
 

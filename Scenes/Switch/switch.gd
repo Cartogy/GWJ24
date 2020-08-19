@@ -20,12 +20,12 @@ func _on_Area2D_body_entered(body):
 	if cur_state != State.ON:
 		cur_state = State.ON
 		$AnimatedSprite.play("On")
-	if affect != null:
-		affect.switch_activated()
+		if affect != null:
+			affect.switch_activated()
 
 func _on_Area2D_body_exited(body):
 	if cur_state == State.ON:
 		cur_state = State.OFF
 		$AnimatedSprite.play("Off")
-	if affect != null:
-		affect.switch_deactivated()
+		if affect != null:
+			affect.switch_deactivated()
