@@ -19,7 +19,7 @@ position = Vector2( 436.311, 114.055 )
 scale = Vector2( 4, 4 )
 
 [node name="Switch1_Barrier" parent="." instance=ExtResource( 2 )]
-position = Vector2( 348.558, 32.5376 )
+position = Vector2( 351.895, 63.2389 )
 scale = Vector2( 4, 4 )
 
 [node name="DuckChickController" parent="." instance=ExtResource( 1 )]
@@ -52,7 +52,7 @@ scale = Vector2( 4, 4 )
 start_effect = "Open"
 on_effect = "Close"
 off_effect = "Open"
-switch_path = [ NodePath("../Switch0_Barrier"), NodePath("../Switch1_Barrier") ]
+switch_path = [ NodePath("../Switch0_Barrier"), NodePath("../Switch1_Barrier"), NodePath("../Switch") ]
 [connection signal="change_item_entity" from="DuckChickController/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
 [connection signal="unlocking" from="DuckChickController/PlayerController" to="ItemManager" method="_on_PlayerController_unlocking"]
 [connection signal="update_position_entity" from="DuckChickController/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
