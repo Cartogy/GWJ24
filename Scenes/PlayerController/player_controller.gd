@@ -14,6 +14,7 @@ signal deactivate_duck
 signal activate_duck
 
 var cur_state = ""	# For chick commands
+var chick_state = ""
 
 func _ready():
 	emit_signal("change_duck_speed", $Data.duck_attached_speed)
@@ -21,26 +22,36 @@ func _ready():
 
 # Change state of Chicks
 func _input(event):
-	if event.is_action_pressed("stay_cmd"):		# H
-		emit_signal("change_flock_state", "Stay")
-		emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-	elif event.is_action_pressed("follow_cmd"):		# M
-		emit_signal("change_flock_state", "Follow")
-		emit_signal("change_duck_speed", $Data.duck_attached_speed)
-		emit_signal("change_chick_speed", $Data.chick_attached_speed)
-	elif event.is_action_pressed("unlocking"):
+	# Commands only available on DuckController
+	if cur_state == "DuckController":
+		if event.is_action_pressed("stay_cmd"):		# H
+			chick_state = "Stay"
+			emit_signal("change_flock_state", "Stay")
+			emit_signal("change_duck_speed", $Data.duck_dettached_speed)
+		elif event.is_action_pressed("follow_cmd"):		# M
+			chick_state = "Follow"
+			emit_signal("change_flock_state", "Follow")
+			emit_signal("change_duck_speed", $Data.duck_attached_speed)
+			emit_signal("change_chick_speed", $Data.chick_attached_speed)
+	# Command for both Duck Controller and Chick Controller
+	if event.is_action_pressed("unlocking"):
 		emit_signal("unlocking")
 
 # Direct control of Movement entities
-func get_input():
-	if Input.is_action_pressed("duck_cmd") && cur_state != "DuckController": 	#G
-		$StateMachine.change_state("DuckController")
-		emit_signal("change_flock_state", "Stay")
-		cur_state = "DuckController"
-		emit_signal("change_item_entity", "Duck")
-		emit_signal("activate_duck")
-		emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-		
+func get_input_v2():
+	if Input.is_action_pressed("duck_cmd"):
+		if cur_state != "DuckController":
+			$StateMachine.change_state("DuckController")
+			emit_signal("change_flock_state", "Stay")
+			cur_state = "DuckController"
+			emit_signal("change_item_entity", "Duck")
+			emit_signal("activate_duck")
+			emit_signal("change_duck_speed", $Data.duck_dettached_speed)
+		else: 
+			if chick_state == "Follow":
+				emit_signal("change_flock_state", "Follow")
+				emit_signal("change_duck_speed", $Data.duck_dettached_speed)
+				chick_state = "Follow"
 	elif Input.is_action_pressed("chick_cmd") && cur_state != "ChickController":		#T
 		$StateMachine.change_state("ChickController")
 		emit_signal("change_flock_state", "Flock")
@@ -48,7 +59,11 @@ func get_input():
 		cur_state = "ChickController"
 		emit_signal("change_item_entity", "Flock")
 		emit_signal("deactivate_duck")
+		chick_state = "Flock"
+
+
+
 
 func _physics_process(delta):
-	get_input()
+	get_input_v2()
 	$StateMachine.tick(delta)

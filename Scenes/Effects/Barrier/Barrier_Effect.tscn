@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Effects/effect.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Effects/Barrier/effect_node_open.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Effects/Barrier/effect_node_close.gd" type="Script" id=3]
+[ext_resource path="res://Textures/Barrier/barrier_closed.png" type="Texture" id=5]
+[ext_resource path="res://Textures/Barrier/barrier_open.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Open",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.49199, 6.93291 )
+
+[node name="Barrier_Effect" type="Node2D"]
+script = ExtResource( 1 )
+start_effect = "Close"
+on_effect = "Open"
+off_effect = "Close"
+
+[node name="EffectManager" type="Node" parent="."]
+
+[node name="EffectNode_0" type="Node" parent="EffectManager"]
+script = ExtResource( 3 )
+effect_node_name = "Close"
+
+[node name="EffectNode_1" type="Node" parent="EffectManager"]
+script = ExtResource( 2 )
+effect_node_name = "Open"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Close"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0.501133, 1.05794 )
+shape = SubResource( 2 )
