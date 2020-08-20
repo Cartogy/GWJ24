@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Duck/duck.gd"
 }, {
+"base": "Node2D",
+"class": "Effect",
+"language": "GDScript",
+"path": "res://Scenes/Effects/effect.gd"
+}, {
+"base": "Node",
+"class": "EffectNode",
+"language": "GDScript",
+"path": "res://Scenes/Effects/effect_node.gd"
+}, {
 "base": "Node",
 "class": "Item",
 "language": "GDScript",
@@ -54,6 +64,8 @@ _global_script_class_icons={
 "Box": "",
 "Chick": "",
 "Duck": "",
+"Effect": "",
+"EffectNode": "",
 "Item": "",
 "Lock": "",
 "Switch": "",
