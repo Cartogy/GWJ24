@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/DuckChickControl.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ItemManager/ItemManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Items/Lock/Lock.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Effects/LockEffects/Lock_test.tscn" type="PackedScene" id=6]
@@ -10,7 +11,7 @@
 [node name="ExampleLevel" type="Node2D"]
 
 [node name="Switch" parent="." instance=ExtResource( 2 )]
-position = Vector2( 260.804, 117.173 )
+position = Vector2( 206.971, 214.949 )
 scale = Vector2( 4, 4 )
 
 [node name="Switch0_Barrier" parent="." instance=ExtResource( 2 )]
@@ -36,6 +37,14 @@ item_manager_path = NodePath("../ItemManager")
 [node name="Lock" parent="." instance=ExtResource( 6 )]
 position = Vector2( 453.845, 205.565 )
 key_path = NodePath("../Item")
+
+[node name="DoorEffect" parent="." instance=ExtResource( 3 )]
+position = Vector2( 277.75, 199.286 )
+scale = Vector2( 4, 4 )
+start_effect = "Open"
+on_effect = "Close"
+off_effect = "Open"
+switch_path = NodePath("../Switch")
 
 [node name="Barrier_Effect_3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 582.656, 50.2046 )
