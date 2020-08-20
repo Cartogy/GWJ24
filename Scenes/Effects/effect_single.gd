@@ -12,11 +12,6 @@ func _ready():
 	switch_for_effect = get_node(switch_path)
 	switch_for_effect.set_effect(self)
 
-func apply_effect_when_on():
-	pass
-	
-func apply_effect_when_off():
-	pass
 	
 func switch_activated():
 	state = State.ACTIVATED
