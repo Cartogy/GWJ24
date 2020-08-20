@@ -1,26 +1,55 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Duck/movement.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Duck/Duck_proto_Back.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://Textures/Duck/duck_proto_front.png" type="Texture" id=4]
+[ext_resource path="res://Textures/Duck/Duck_Sprite_Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Duck/duck.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/ScriptClasses/animation_vector.gd" type="Script" id=6]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "Side",
+"name": "up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Back",
+"name": "side",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "Front",
+"name": "bottom_right",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "top_right",
 "speed": 5.0
 } ]
 
@@ -28,20 +57,16 @@ animations = [ {
 extents = Vector2( 2.25194, 2.03848 )
 
 [node name="Duck" type="KinematicBody2D"]
-position = Vector2( 141.54, 164.481 )
+position = Vector2( 140.489, 164.061 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
 radius = 20
 steering = 0.04
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -0.214184, 0.0442142 )
-scale = Vector2( 0.267404, 0.244253 )
+position = Vector2( -0.424412, -6.40266 )
 frames = SubResource( 1 )
-animation = "Side"
+animation = "top_right"
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -54,3 +79,7 @@ shape = SubResource( 2 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
 default_color = Color( 0.662745, 0.00392157, 0.145098, 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 1, 0 )
+script = ExtResource( 6 )
