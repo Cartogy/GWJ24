@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AnimationVector",
+"language": "GDScript",
+"path": "res://Scenes/ScriptClasses/animation_vector.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Boid",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/ScriptClasses/vector_movement.gd"
 } ]
 _global_script_class_icons={
+"AnimationVector": "",
 "Boid": "",
 "Box": "",
 "Chick": "",

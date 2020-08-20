@@ -19,7 +19,7 @@ position = Vector2( 436.311, 114.055 )
 scale = Vector2( 4, 4 )
 
 [node name="Switch1_Barrier" parent="." instance=ExtResource( 2 )]
-position = Vector2( 348.558, 32.5376 )
+position = Vector2( 351.895, 63.2389 )
 scale = Vector2( 4, 4 )
 
 [node name="DuckChickController" parent="." instance=ExtResource( 1 )]
@@ -52,13 +52,9 @@ scale = Vector2( 4, 4 )
 start_effect = "Open"
 on_effect = "Close"
 off_effect = "Open"
-switch_path = [ NodePath("../Switch0_Barrier"), NodePath("../Switch1_Barrier") ]
+switch_path = [ NodePath("../Switch0_Barrier"), NodePath("../Switch1_Barrier"), NodePath("../Switch") ]
 [connection signal="change_item_entity" from="DuckChickController/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
 [connection signal="unlocking" from="DuckChickController/PlayerController" to="ItemManager" method="_on_PlayerController_unlocking"]
-[connection signal="give_desired_direction" from="DuckChickController/PlayerController/StateMachine/DuckMovement" to="DuckChickController/Duck" method="_on_DuckMovement_give_desired_direction"]
-[connection signal="stop_moving" from="DuckChickController/PlayerController/StateMachine/DuckMovement" to="DuckChickController/Duck" method="_on_DuckMovement_stop_moving"]
-[connection signal="calculate_flock_center_average" from="DuckChickController/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickController/FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
-[connection signal="update_flock_center" from="DuckChickController/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickController/FlockManager" method="_on_ChickHordeMovement_update_flock_center"]
 [connection signal="update_position_entity" from="DuckChickController/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
 [connection signal="update_entity_position" from="DuckChickController/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
 [connection signal="notify_item_manager" from="Item" to="ItemManager" method="_on_Item_notify_item_manager"]
