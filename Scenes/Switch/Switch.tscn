@@ -21,6 +21,7 @@ animations = [ {
 extents = Vector2( 5.95285, 4.82015 )
 
 [node name="Switch" type="Node2D"]
+z_index = -1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

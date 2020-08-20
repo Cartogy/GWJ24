@@ -47,7 +47,7 @@ func get_input_v2():
 			emit_signal("change_item_entity", "Duck")
 			emit_signal("activate_duck")
 			emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-		else: 
+		else:
 			if chick_state == "Follow":
 				emit_signal("change_flock_state", "Follow")
 				emit_signal("change_duck_speed", $Data.duck_dettached_speed)

@@ -1,12 +1,61 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Parent_level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Effects/effect_multiple.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 42.501, 83.39 )
 
 [node name="LevelIdea1" instance=ExtResource( 1 )]
 
 [node name="DuckandChicks" parent="." index="0"]
-position = Vector2( 24.9945, 176.61 )
+position = Vector2( 762.452, 175.488 )
+
+[node name="Data" parent="DuckandChicks/PlayerController" index="0"]
+duck_attached_speed = 95.0
+duck_dettached_speed = 125.0
+chick_attached_speed = 135.0
+chick_horde_speed = 155.0
+
+[node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
+position = Vector2( 140.498, 303.756 )
+
+[node name="Chick2" parent="DuckandChicks/FlockManager" index="1"]
+position = Vector2( 194.416, 317.039 )
+
+[node name="Chick3" parent="DuckandChicks/FlockManager" index="2"]
+position = Vector2( 196.198, 291.203 )
 
 [node name="WorldComplete" parent="." index="1"]
 position = Vector2( 43.2086, 302.46 )
 next_world = "res://Levels/Level_idea2.tscn"
+
+[node name="CollisionShape2D" parent="WorldComplete" index="0"]
+shape = SubResource( 1 )
+
+[node name="Switch1" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 761.969, 305.575 )
+scale = Vector2( 4, 4 )
+
+[node name="DoorEffect1" parent="." index="3" instance=ExtResource( 2 )]
+position = Vector2( 522.756, 271.715 )
+scale = Vector2( 7, 16 )
+script = ExtResource( 4 )
+switch_path = [ NodePath("../Switch1"), NodePath("../Switch2") ]
+
+[node name="Switch2" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 298.069, 308.909 )
+scale = Vector2( 4, 4 )
+
+[node name="TileMap" parent="." index="5"]
+tile_data = PoolIntArray( 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 393244, 0, 0, 393245, 0, 0, 393246, 0, 0, 393247, 0, 0, 393248, 0, 0, 524287, 0, 0, 458784, 0, 0, 589823, 0, 0, 524320, 0, 0, 655359, 0, 0, 589856, 0, 0, 720895, 0, 0, 655392, 0, 0, 786431, 0, 0, 720928, 0, 0, 851967, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786457, 0, 0, 786458, 0, 0, 786459, 0, 0, 786460, 0, 0, 786461, 0, 0, 786462, 0, 0, 786463, 0, 0, 786464, 0, 0 )
+[connection signal="give_desired_direction" from="DuckandChicks/PlayerController/StateMachine/DuckMovement" to="DuckandChicks/Duck" method="_on_DuckMovement_give_desired_direction"]
+[connection signal="stop_moving" from="DuckandChicks/PlayerController/StateMachine/DuckMovement" to="DuckandChicks/Duck" method="_on_DuckMovement_stop_moving"]
+[connection signal="calculate_flock_center_average" from="DuckandChicks/PlayerController/StateMachine/ChickHordeMovement" to="DuckandChicks/FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
+[connection signal="update_flock_center" from="DuckandChicks/PlayerController/StateMachine/ChickHordeMovement" to="DuckandChicks/FlockManager" method="_on_ChickHordeMovement_update_flock_center"]
+
+[editable path="DuckandChicks"]
+
+[editable path="DuckandChicks/PlayerController"]
