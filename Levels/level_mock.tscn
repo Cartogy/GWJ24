@@ -39,10 +39,6 @@ position = Vector2( 412.014, 202.87 )
 
 [node name="ItemManager" parent="." instance=ExtResource( 6 )]
 [connection signal="change_item_entity" from="DuckChickControl/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
-[connection signal="give_desired_direction" from="DuckChickControl/PlayerController/StateMachine/DuckMovement" to="DuckChickControl/Duck" method="_on_DuckMovement_give_desired_direction"]
-[connection signal="stop_moving" from="DuckChickControl/PlayerController/StateMachine/DuckMovement" to="DuckChickControl/Duck" method="_on_DuckMovement_stop_moving"]
-[connection signal="calculate_flock_center_average" from="DuckChickControl/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickControl/FlockManager" method="_on_ChickHordeMovement_calculate_flock_center_average"]
-[connection signal="update_flock_center" from="DuckChickControl/PlayerController/StateMachine/ChickHordeMovement" to="DuckChickControl/FlockManager" method="_on_ChickHordeMovement_update_flock_center"]
 [connection signal="update_position_entity" from="DuckChickControl/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
 [connection signal="update_entity_position" from="DuckChickControl/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
 [connection signal="notify_item_manager" from="Item" to="ItemManager" method="_on_Item_notify_item_manager"]

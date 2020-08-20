@@ -15,7 +15,7 @@ func _ready():
 		var switch = get_node(path)
 		switch.set_effect(self)
 		switches.append(switch)
-		
+
 		index += 1
 	total_switches = index
 
@@ -24,11 +24,11 @@ func switch_activated():
 	current_switches_on += 1
 	if current_switches_on == total_switches:
 		apply_effect_when_on()
-	
+
 func switch_deactivated():
 	if current_switches_on == total_switches:
 		if effect_type == Type.CONSTANT:
 			apply_effect_when_off()
 	current_switches_on -= 1
 
-	
+

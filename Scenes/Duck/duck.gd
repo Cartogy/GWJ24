@@ -16,7 +16,7 @@ func _ready():
 
 func change_direction(dir):
 	set_forward_v(dir)
-	
+
 	$ForwardRay.set_point_position(1, get_forward_v() * 4)
 
 func _process(delta):
@@ -24,7 +24,7 @@ func _process(delta):
 
 func get_gap():
 	return radius
-	
+
 func _draw():
 	draw_circle(get_forward_v() * 10, 1, Color.green)
 

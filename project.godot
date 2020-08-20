@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Switch/switch.gd"
 }, {
+"base": "Lock",
+"class": "Unlock",
+"language": "GDScript",
+"path": "res://Scenes/Effects/LockEffects/unlock.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "VectorMovement",
 "language": "GDScript",
@@ -69,6 +74,7 @@ _global_script_class_icons={
 "Item": "",
 "Lock": "",
 "Switch": "",
+"Unlock": "",
 "VectorMovement": ""
 }
 

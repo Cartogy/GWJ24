@@ -22,15 +22,15 @@ func _ready():
 
 func apply_effect_when_on():
 	effects_available[on_effect].play_effect()
-	
+
 func apply_effect_when_off():
 	effects_available[off_effect].play_effect()
-	
+
 func switch_activated():
 	pass
 
 func switch_deactivated():
 	pass
-	
+
 func _on_EffectNode_add(name, effect_node):
 	effects_available[name] = effect_node
