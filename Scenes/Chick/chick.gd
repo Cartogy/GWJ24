@@ -14,35 +14,35 @@ var circle_point = Vector2()
 
 func _ready():
 	pass
-	
+
 func _process(delta):
 	update()
-	
+
 func _physics_process(delta):
 	$StateMachine.tick(delta)
-	
+
 func get_lead():
 	return lead
-	
+
 func set_lead(new_lead):
 	lead = new_lead
-	
+
 func get_gap():
-	return gap	
+	return gap
 
 func set_gap(val):
 	gap = val
-	
+
 func set_speed(val):
 	speed = val
-	
+
 func set_circle_center(point):
 	circle_point = point
-	
+
 func _draw():
 	draw_circle(circle_point, 5, Color.red)
 	draw_circle(goal_point - position, 5, Color.pink)
-	
+
 func change_state(state):
 	$StateMachine.change_state(state)
 
@@ -54,7 +54,7 @@ func change_leader(chick):
 	var chick_distance_away = abs((chick.position - chick.lead.position).length())
 	# current chick
 	var distance_away = abs((position - lead.position).length())
-	
+
 	# change leader if the chick we collided is closer to the main leader
 	if chick_distance_away < distance_away:
 		lead = chick
@@ -69,5 +69,5 @@ func _on_Area2D_body_entered(body):
 	#	print("Is a chick")
 	#	if kin.lead == lead:
 	#		change_leader(kin)
-		
+
 

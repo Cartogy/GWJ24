@@ -20,10 +20,10 @@ func _ready():
 	main_duck = get_node(main_duck_path)
 	var previous_chick = null
 	for chick in get_children():
-		
+
 		chick.set_gap(gap_per_chick)
 		chick.set_speed(speed_chick)
-		
+
 		if main_duck != null:
 			# Set leads for chicks
 			if previous_chick == null:
@@ -34,10 +34,10 @@ func _ready():
 				previous_chick = chick
 		else:
 			chick.set_lead(null)
-		
-		
+
+
 		chicks.append(chick)
-		
+
 
 func _physics_process(delta):
 	average_flock_center = calculate_average_center()
@@ -49,13 +49,13 @@ func change_chick_state(state):
 		for chick in chicks:
 			chick.change_state(state)
 		current_chick_state = state
-	
+
 
 func update_goals_dir(new_goal, dir):
 	for chick in chicks:
 		chick.goal_point = new_goal
 		chick.set_desired_direction_v(dir)
-		
+
 
 func calculate_average_center() -> Vector2:
 	var total_chicks = 0
@@ -63,17 +63,17 @@ func calculate_average_center() -> Vector2:
 	for chick in chicks:
 		sum += chick.get_global_position()
 		total_chicks += 1
-	
+
 	var avg_pos = sum / total_chicks
 	return avg_pos
-	
-	
-	
-	
+
+
+
+
 func change_flock_speed(spd):
 	for chick in chicks:
 		chick.set_speed(spd)
-	
+
 
 func _on_ChickHordeMovement_update_flock_center(dir, spd):
 	average_flock_center = calculate_average_center()
@@ -81,7 +81,7 @@ func _on_ChickHordeMovement_update_flock_center(dir, spd):
 	goal = average_flock_center + goal_direction
 	emit_signal("update_entity_position", average_flock_center)
 	update_goals_dir(goal, dir.normalized())
-	
+
 
 
 func _on_ChickHordeMovement_calculate_flock_center_average():

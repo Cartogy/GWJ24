@@ -9,7 +9,7 @@ export (NodePath) var key_path
 var key
 var near_lock
 
-		
+
 
 func _ready():
 	key = get_node(key_path)
@@ -20,10 +20,10 @@ func apply_key_item(key_item) -> bool:
 		return true
 	else:
 		return false
-		
+
 func unlock():
 	pass
-	
+
 
 # Notify Item Manager to update the DataEntities
 func _on_Area2D_body_entered(body):

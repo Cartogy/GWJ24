@@ -3,7 +3,7 @@ extends Node
 enum Entity_State { DUCK, FLOCK }
 var cur_entity_state
 
-var cur_entity_item 
+var cur_entity_item
 
 var item_near_player : Item
 
@@ -15,12 +15,12 @@ func _input(event):
 	if Input.is_action_pressed("drop_item"):
 		if cur_entity_item.has_item:
 			activate_item()
-		
-	
+
+
 func _physics_process(delta):
 	if cur_entity_item.has_item:
 		cur_entity_item.update_item_position()
-	
+
 func set_entity_state(state):
 	if state == "Duck":
 		print("Duck entity")
@@ -38,17 +38,17 @@ func update_entity_position(pos):
 
 func deactivate_item(item: Item):
 	item.set_physics_process(false)
-	
+
 	cur_entity_item.current_item = item
 	cur_entity_item.has_item = true
-	
+
 func activate_item():
 	cur_entity_item.current_item.set_physics_process(true)
 	cur_entity_item.current_item.global_position = cur_entity_item.get_entity_position()
 	cur_entity_item.has_item = false
 	cur_entity_item.current_item.get_node("CollisionShape2D").set_deferred("disabled", false)	# Let the item have and effect on switches
 	cur_entity_item.current_item = null
-		
+
 func pickup_item(item):
 	if cur_entity_item.has_item == false:
 		print(cur_entity_state)
@@ -56,14 +56,14 @@ func pickup_item(item):
 		cur_entity_item.set_current_item(item)
 		print(cur_entity_item.name)
 		deactivate_item(item)
-		
+
 func set_entity_lock(lock):
 	cur_entity_item.set_lock(lock)
 
 func unlock_lock():
 	var item = cur_entity_item.get_current_item()
 	var lock = cur_entity_item.get_lock()
-	
+
 	if item && lock:
 		if lock.apply_key_item(item):
 			cur_entity_item.set_current_item(null)
@@ -79,7 +79,7 @@ func _on_Duck_update_position_entity(pos):
 
 
 func _on_FlockManager_update_entity_position(pos):
-	
+
 	update_entity_position(pos)
 
 func _on_Item_pick_up(item):
