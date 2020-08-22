@@ -87,6 +87,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Follow="*res://Autoload/Follow.gd"
+ConfigManager="*res://Autoload/ConfigManager.gd"
+SoundManager="*res://Autoload/SoundManager.tscn"
 
 [display]
 

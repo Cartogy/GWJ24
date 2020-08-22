@@ -25,7 +25,7 @@ func _input(event):
 	# Commands only available on DuckController
 	if cur_state == "DuckController":
 		if event.is_action_pressed("stay_cmd"):		# H
-#			SoundManager.play_quack_neutral()
+			SoundManager.play_quack_neutral()
 			chick_state = "Stay"
 			emit_signal("change_flock_state", "Stay")
 			emit_signal("change_duck_speed", $Data.duck_dettached_speed)

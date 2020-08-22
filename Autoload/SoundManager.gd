@@ -3,6 +3,8 @@ extends Node
 onready var music_player = $MusicPlayer
 onready var sound_player = $SoundPlayer
 
+
+
 var chirp_calm = preload("res://Audio/SFX/Chirps1.ogg")
 var chirp_stress = preload("res://Audio/SFX/Chirps2.ogg")
 var quack_angry = preload("res://Audio/SFX/Quack1.ogg")
@@ -18,6 +20,7 @@ func _ready():
 #	randomize()
 #	set_volume()
 #	play_random_music()
+	
 	pass
 
 #func play_random_music():
