@@ -87,6 +87,11 @@ config/icon="res://icon.png"
 
 Follow="*res://Autoload/Follow.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [input]
 
 stay_cmd={
