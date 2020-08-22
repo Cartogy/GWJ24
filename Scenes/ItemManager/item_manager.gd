@@ -51,11 +51,13 @@ func activate_item():
 
 func pickup_item(item):
 	if cur_entity_item.has_item == false:
-		print(cur_entity_state)
-		item.get_node("CollisionShape2D").set_deferred("disabled", true)	# Prevents collision between duck and item
-		cur_entity_item.set_current_item(item)
-		print(cur_entity_item.name)
-		deactivate_item(item)
+		
+		# Don't teleport item to another entity's position
+		if $DuckItems.current_item != item && $FlockItem.current_item != item:
+			item.get_node("CollisionShape2D").set_deferred("disabled", true)	# Prevents collision between duck and item
+			cur_entity_item.set_current_item(item)
+			print(cur_entity_item.name)
+			deactivate_item(item)
 
 func set_entity_lock(lock):
 	cur_entity_item.set_lock(lock)

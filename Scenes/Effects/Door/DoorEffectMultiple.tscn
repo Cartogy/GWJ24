@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Effects/effect_multiple.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=2]
+
+[node name="DoorEffectMultiple" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+start_effect = ""
+on_effect = ""
+off_effect = ""

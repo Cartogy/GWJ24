@@ -28,6 +28,18 @@ position = Vector2( -1.25992, 0 )
 [node name="Data" parent="DuckChickController/PlayerController" index="0"]
 duck_dettached_speed = 150.0
 
+[node name="Duck" parent="DuckChickController" index="1"]
+position = Vector2( 138.79, 83.6976 )
+
+[node name="Chick" parent="DuckChickController/FlockManager" index="0"]
+position = Vector2( 20.658, 135.502 )
+
+[node name="Chick2" parent="DuckChickController/FlockManager" index="1"]
+position = Vector2( 74.5755, 148.785 )
+
+[node name="Chick3" parent="DuckChickController/FlockManager" index="2"]
+position = Vector2( 76.3575, 121.949 )
+
 [node name="ItemManager" parent="." instance=ExtResource( 4 )]
 
 [node name="Item" parent="." instance=ExtResource( 5 )]
