@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/messe_dusseldorf/MesseDuesseldorf-O1d3.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/MainMenu/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Buttons/quit_button.gd" type="Script" id=4]
+[ext_resource path="res://UI/Buttons/start_game_button.gd" type="Script" id=5]
 [ext_resource path="res://UI/Buttons/MuteOffButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Buttons/mute_manager.gd" type="Script" id=7]
 [ext_resource path="res://UI/Buttons/MainButton.tscn" type="PackedScene" id=8]
@@ -102,13 +104,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 23
 
-[node name="TextureButton2" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Start" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+script = ExtResource( 5 )
+begin_scene = "res://Scenes/GameManager/GameManager.tscn"
 
-[node name="TextureButton3" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Quit" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
 margin_top = 53.0
 margin_bottom = 83.0
+script = ExtResource( 4 )
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureButton3" index="0"]
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Quit" index="0"]
 text = "Quit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
@@ -160,6 +165,4 @@ margin_right = 99.0
 margin_bottom = 0.0
 size_flags_stretch_ratio = 0.0
 
-[editable path="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureButton2"]
-
-[editable path="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/TextureButton3"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Quit"]
