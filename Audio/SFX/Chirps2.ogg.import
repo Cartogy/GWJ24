@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Chirps2.ogg-0ac1ea6e7bdf4f510e91b3165a046846.oggstr"
+
+[deps]
+
+source_file="res://Audio/SFX/Chirps2.ogg"
+dest_files=[ "res://.import/Chirps2.ogg-0ac1ea6e7bdf4f510e91b3165a046846.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

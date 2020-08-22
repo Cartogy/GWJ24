@@ -5,7 +5,7 @@
 [ext_resource path="res://Levels/TileMap.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 36.9104, 61.7712 )
 
 [node name="ParentLevel" type="Node2D"]
 
@@ -13,6 +13,7 @@ extents = Vector2( 32, 32 )
 
 [node name="WorldComplete" type="Area2D" parent="."]
 position = Vector2( 417.192, 205.765 )
+z_index = -1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

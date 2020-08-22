@@ -35,7 +35,7 @@ position = Vector2( 113.461, 180.203 )
 item_manager_path = NodePath("../ItemManager")
 
 [node name="Lock" parent="." instance=ExtResource( 6 )]
-position = Vector2( 453.845, 205.565 )
+position = Vector2( 239.845, 121.565 )
 key_path = NodePath("../Item")
 
 [node name="DoorEffect" parent="." instance=ExtResource( 3 )]
@@ -64,3 +64,5 @@ switch_path = [ NodePath("../Switch0_Barrier"), NodePath("../Switch1_Barrier"), 
 [editable path="DuckChickController"]
 
 [editable path="DuckChickController/PlayerController"]
+
+[editable path="Lock"]
