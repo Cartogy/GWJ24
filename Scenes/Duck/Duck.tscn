@@ -5,55 +5,55 @@
 [ext_resource path="res://Scenes/Duck/duck.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/ScriptClasses/animation_vector.gd" type="Script" id=6]
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 16, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "up",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "side",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "bottom_right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ) ],
+"frames": [ SubResource( 4 ) ],
 "loop": true,
 "name": "down",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ) ],
+"frames": [ SubResource( 5 ) ],
 "loop": true,
 "name": "top_right",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 2.25194, 2.03848 )
 
 [node name="Duck" type="KinematicBody2D"]
@@ -65,7 +65,7 @@ steering = 0.04
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.424412, -6.40266 )
-frames = SubResource( 1 )
+frames = SubResource( 6 )
 animation = "top_right"
 
 [node name="Movement" type="Node" parent="."]
@@ -73,7 +73,7 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.222473, -0.132284 )
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="ForwardRay" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 0, 0 )
