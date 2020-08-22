@@ -9,6 +9,7 @@
 extents = Vector2( 36.9104, 61.7712 )
 
 [node name="Level_2" instance=ExtResource( 2 )]
+pause_mode = 0
 
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 890, 308.909 )

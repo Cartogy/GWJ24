@@ -23,6 +23,7 @@ func _physics_process(delta):
 extents = Vector2( 120, 32 )
 
 [node name="Level_0" instance=ExtResource( 1 )]
+pause_mode = 0
 
 [node name="Data" parent="DuckandChicks/PlayerController" index="0"]
 duck_attached_speed = 95.0

@@ -20,10 +20,17 @@ func _input(event):
 		change_state()
 			
 func enable_game():
-	pass
+	set_level(false)
 	
 func disable_game():
-	pass
+	set_level(true)
+	
+func set_level(status: bool):
+	get_tree().paused = status
+	#current_level.set_process(status)
+	#current_level.set_physics_process(status)
+	#current_level.set_process_input(status)
+	#current_level.get_tree().paused = status
 
 func change_state():
 	if current_state == State.INGAME:
