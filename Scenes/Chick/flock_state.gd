@@ -19,7 +19,8 @@ func update(delta):
 	if chick.goal_point != null:
 		velocity = to_goal(chick.get_global_position(), chick.goal_point, chick.MAX_DISTANCE, chick.speed)
 		#chick.set_desired_direction_v(velocity)
-
+	if velocity != Vector2.ZERO:
+		chick.set_forward_v(velocity)
 
 	chick.move_and_slide(velocity)
 	if chick.get_slide_count() > 0:

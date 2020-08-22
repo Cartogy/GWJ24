@@ -17,7 +17,7 @@ func update(delta):
 
 	var direction = direction_to_follow()
 
-
+	chick.set_desired_direction_v(direction)
 	direction = chick.move_and_slide(direction * chick.speed, Vector2(0,0))
 
 	# change direction of chick if moving.
