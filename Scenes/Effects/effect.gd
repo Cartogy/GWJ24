@@ -12,6 +12,7 @@ export (String) var off_effect
 var effects_available = {}
 
 func _ready():
+	# This was a pain
 	print(get_child_count())
 	for names in get_children():
 		print(names)

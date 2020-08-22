@@ -8,6 +8,7 @@
 extents = Vector2( 36.9104, 61.7712 )
 
 [node name="ParentLevel" type="Node2D"]
+pause_mode = 1
 
 [node name="DuckandChicks" parent="." instance=ExtResource( 1 )]
 

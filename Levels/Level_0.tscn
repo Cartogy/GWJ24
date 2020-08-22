@@ -23,6 +23,7 @@ func _physics_process(delta):
 extents = Vector2( 120, 32 )
 
 [node name="Level_0" instance=ExtResource( 1 )]
+pause_mode = 0
 
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 39.1996, 162.144 )
