@@ -8,7 +8,7 @@ onready var packed_mute_on_button = load("res://UI/Buttons/MuteOnButton.tscn")
 var mute_on_button
 var mute_off_button
 
-# Allows for simple toggle behaviour 
+# Allows for simple toggle behaviour
 enum MuteState { OFF, ON }
 var current_state
 

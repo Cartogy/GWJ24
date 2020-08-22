@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Chirps2.ogg-0ac1ea6e7bdf4f510e91b3165a046846.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
