@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Buttons/MuteOffButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/UI/Buttons/Muted/mute_button_MUTED.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/Buttons/Muted/Mute_Button_MUTED_Click.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UI/Buttons/Muted/Mute_button_MUTED_Hover.png" type="Texture" id=4]
+
+[node name="MuteOffButton" instance=ExtResource( 1 )]
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )

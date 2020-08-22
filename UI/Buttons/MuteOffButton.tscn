@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Theme/DuckTheme.theme" type="Theme" id=1]
+[ext_resource path="res://Textures/UI/Buttons/Muted/mute_button_click.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/Buttons/Muted/mute_button_hover.png" type="Texture" id=3]
+[ext_resource path="res://Textures/UI/Buttons/Muted/mute_button_on.png" type="Texture" id=4]
+[ext_resource path="res://UI/Buttons/mute_button.gd" type="Script" id=5]
+
+[node name="MuteOffButton" type="TextureButton"]
+margin_left = 267.0
+margin_top = 394.0
+margin_right = 297.0
+margin_bottom = 424.0
+rect_min_size = Vector2( 30, 30 )
+theme = ExtResource( 1 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
