@@ -13,11 +13,13 @@
 duck_attached_speed = 25.0
 duck_dettached_speed = 50.0
 chick_horde_speed = 80.0
-chick_center_speed = 40.0
 
 [node name="Duck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 173.902, 117.962 )
+position = Vector2( 0, 0 )
 radius = 25
+
+[node name="CollisionShape2D" parent="Duck" index="2"]
+position = Vector2( 0, 0 )
 
 [node name="FlockManager" parent="." instance=ExtResource( 3 )]
 gap_per_chick = 18
@@ -25,15 +27,15 @@ speed_chick = 30.0
 main_duck_path = NodePath("../Duck")
 
 [node name="Chick" parent="FlockManager" instance=ExtResource( 1 )]
-position = Vector2( 85.5264, 65.9266 )
+position = Vector2( -107.537, 3.06872 )
 duck_path = NodePath("../Duck")
 
 [node name="Chick2" parent="FlockManager" instance=ExtResource( 1 )]
-position = Vector2( 139.444, 79.2101 )
+position = Vector2( -53.6195, 16.3522 )
 duck_path = NodePath("../Duck")
 
 [node name="Chick3" parent="FlockManager" instance=ExtResource( 1 )]
-position = Vector2( 141.226, 53.374 )
+position = Vector2( -51.8375, -10.4839 )
 duck_path = NodePath("../Duck")
 [connection signal="activate_duck" from="PlayerController" to="Duck" method="_on_PlayerController_activate_duck"]
 [connection signal="change_chick_speed" from="PlayerController" to="FlockManager" method="_on_PlayerController_change_chick_speed"]

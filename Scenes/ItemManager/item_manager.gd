@@ -33,8 +33,8 @@ func set_entity_state(state):
 
 func update_entity_position(pos):
 	cur_entity_item.set_entity_position(pos)
-	print("Entityi Position")
-	print(pos)
+#	print("Entityi Position")
+#	print(pos)
 
 func deactivate_item(item: Item):
 	item.set_physics_process(false)
@@ -101,3 +101,5 @@ func _on_Lock_notify_entity_left():
 
 func _on_PlayerController_unlocking():
 	unlock_lock()
+
+

@@ -31,5 +31,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="TileMap" type="TileMap"]
 modulate = Color( 0, 1, 0.0627451, 1 )
 scale = Vector2( 0.5, 0.5 )
+z_index = -10
 tile_set = SubResource( 2 )
 format = 1

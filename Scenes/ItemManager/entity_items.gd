@@ -20,10 +20,10 @@ func remove_current_item():
 	if has_item:
 		current_item = null
 		has_item = false
-		
+
 func set_entity_position(val: Vector2):
 	entity_position = val
-	
+
 func get_entity_position() -> Vector2:
 	return entity_position
 
@@ -32,10 +32,10 @@ func update_item_position():
 
 func set_lock(val):
 	near_lock = val
-	
+
 func get_lock():
 	if near_lock != null:
 		return near_lock
-	
+
 func remove_lock():
 	near_lock = null

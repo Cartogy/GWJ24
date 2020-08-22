@@ -22,7 +22,9 @@ func apply_key_item(key_item) -> bool:
 		return false
 
 func unlock():
-	pass
+	print_debug("Unlocked")
+	get_node("StaticBody2D").get_node("CollisionShape2D").set_deferred("disabled", true)
+	get_node("AnimatedSprite").play("open")
 
 
 # Notify Item Manager to update the DataEntities
