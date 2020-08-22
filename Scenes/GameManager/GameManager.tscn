@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Pause/Pause.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GameManager/game_manager.gd" type="Script" id=2]
+
+[node name="GameManager" type="Node"]
+script = ExtResource( 2 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 1 )]

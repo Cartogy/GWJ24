@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/messe_dusseldorf/MesseDuesseldorf-O1d3.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/MainMenu/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Buttons/MuteOffButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://UI/Buttons/mute_manager.gd" type="Script" id=7]
 [ext_resource path="res://UI/Buttons/MainButton.tscn" type="PackedScene" id=8]
@@ -29,8 +30,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="MarginContainer"]
-light_mask = 0
+[node name="TextureRect" parent="MarginContainer" instance=ExtResource( 3 )]
+modulate = Color( 0.552941, 0.552941, 0.552941, 1 )
 margin_right = 1024.0
 margin_bottom = 600.0
 

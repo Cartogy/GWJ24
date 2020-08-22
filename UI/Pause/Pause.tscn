@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Buttons/MainButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Textures/UI/Buttons/banner_background.png" type="Texture" id=2]
+[ext_resource path="res://Textures/UI/Background_pause_v2.png" type="Texture" id=2]
+[ext_resource path="res://UI/Buttons/mute_manager.gd" type="Script" id=3]
+[ext_resource path="res://UI/Buttons/MuteOffButton.tscn" type="PackedScene" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -13,12 +15,11 @@ __meta__ = {
 }
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-modulate = Color( 0.501961, 0.305882, 0.505882, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -122.0
+margin_left = -118.0
 margin_top = -140.0
 margin_right = 118.0
 margin_bottom = 40.0
@@ -37,7 +38,7 @@ margin_left = -70.0
 margin_top = -108.54
 margin_right = 70.0
 margin_bottom = -22.5396
-custom_constants/separation = 26
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,11 +49,25 @@ __meta__ = {
 text = "Resume"
 
 [node name="TextureButton4" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 56.0
-margin_bottom = 86.0
+margin_top = 50.0
+margin_bottom = 80.0
 
 [node name="Label" parent="VBoxContainer/TextureButton4" index="0"]
 text = "Quit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 100.0
+margin_right = 144.0
+margin_bottom = 100.0
+alignment = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 144.0
+script = ExtResource( 3 )
+
+[node name="MuteOffButton" parent="VBoxContainer/HBoxContainer/Control" instance=ExtResource( 4 )]
+margin_left = -33.0
 
 [editable path="VBoxContainer/TextureButton3"]
 
