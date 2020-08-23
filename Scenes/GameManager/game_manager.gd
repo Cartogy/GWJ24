@@ -14,17 +14,18 @@ func _ready():
 	pause_ui.focus_mode = pause_ui.FOCUS_NONE
 	remove_child(pause_ui)
 	current_level = get_node("Level_1")
+	play_level_music()
 
 func _input(event):
 	if Input.is_action_just_pressed("pause_menu"):
 		change_state()
-			
+
 func enable_game():
 	set_level(false)
-	
+
 func disable_game():
 	set_level(true)
-	
+
 func set_level(status: bool):
 	get_tree().paused = status
 	#current_level.set_process(status)
@@ -42,13 +43,15 @@ func change_state():
 		current_state = State.INGAME
 		enable_game()
 
+func play_level_music():
+		SoundManager.play_random_music()
+
 func _on_World_Complete(next_level_path):
 	var next_level_pack = load(next_level_path)
 	var next_level = next_level_pack.instance()
 	var prev_level = current_level
 	current_level = next_level
-	
+
 	#remove_child(prev_level)
 	prev_level.queue_free()
 	add_child(current_level)
-	
