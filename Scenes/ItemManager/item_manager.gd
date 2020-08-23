@@ -112,3 +112,4 @@ func _on_PlayerController_unlocking():
 	if cur_entity_item.near_lock != null:
 		unlock_lock()
 
+

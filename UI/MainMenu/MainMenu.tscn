@@ -64,7 +64,8 @@ margin_bottom = 121.0
 rect_min_size = Vector2( 400, 64 )
 custom_fonts/mono_font = SubResource( 1 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "Fluck of Ducks"
+bbcode_text = "Flock of Ducks"
+text = "Flock of Ducks"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 195.0

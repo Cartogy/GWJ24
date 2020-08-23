@@ -16,7 +16,8 @@ func _ready():
 	pass
 
 func _process(delta):
-	update()
+	pass
+	#update()
 
 func _physics_process(delta):
 	$StateMachine.tick(delta)
@@ -40,8 +41,9 @@ func set_circle_center(point):
 	circle_point = point
 
 func _draw():
-	draw_circle(circle_point, 5, Color.red)
-	draw_circle(goal_point - position, 5, Color.pink)
+	pass
+	#draw_circle(circle_point, 5, Color.red)
+	#draw_circle(goal_point - position, 5, Color.pink)
 
 func change_state(state):
 	$StateMachine.change_state(state)
