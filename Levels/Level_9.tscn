@@ -34,7 +34,7 @@ position = Vector2( 525.995, 544.646 )
 [node name="PlayerController" parent="DuckandChicks" index="0"]
 position = Vector2( 4.6521, 4.54199 )
 
-[node name="Data" parent="DuckandChicks/PlayerController" index="0"]
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
 duck_attached_speed = 95.0
 duck_dettached_speed = 125.0
 chick_horde_speed = 155.0

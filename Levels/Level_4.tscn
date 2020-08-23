@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Scenes/Key_Signs/Key_Sign_E.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Effects/LockEffects/Lock_Barrier.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ItemManager/ItemManager.tscn" type="PackedScene" id=4]
@@ -72,6 +73,10 @@ shape = SubResource( 2 )
 
 [node name="TileMap" parent="." index="5"]
 tile_data = PoolIntArray( 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 65545, 1, 0, 65546, 0, 0, 65547, 0, 0, 65554, 0, 0, 65555, 0, 0, 65556, 1, 0, 131081, 1, 0, 131082, 0, 0, 131083, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 1, 0, 196617, 1, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 1, 0, 262153, 1, 0, 262154, 0, 0, 262163, 0, 0, 262164, 1, 0, 327689, 1, 0, 327690, 0, 0, 327699, 0, 0, 327700, 1, 0, 393225, 1, 0, 393226, 0, 0, 393235, 0, 0, 393236, 1, 0, 458761, 1, 0, 458762, 0, 0, 458771, 0, 0, 458772, 1, 0, 524297, 1, 0, 524298, 0, 0, 524307, 0, 0, 524308, 1, 0, 589833, 1, 0, 589834, 0, 0, 589843, 0, 0, 589844, 1, 0, 655369, 1, 0, 655370, 0, 0, 655379, 0, 0, 655380, 1, 0, 720905, 1, 0, 720906, 0, 0, 720915, 0, 0, 720916, 1, 0, 786441, 1, 0, 786442, 0, 0, 786451, 0, 0, 786452, 1, 0, 851977, 1, 0, 851978, 0, 0, 851987, 0, 0, 851988, 1, 0, 917513, 1, 0, 917514, 0, 0, 917523, 0, 0, 917524, 1, 0, 983049, 1, 0, 983050, 0, 0, 983059, 0, 0, 983060, 1, 0, 1048585, 1, 0, 1048586, 0, 0, 1048595, 0, 0, 1048596, 1, 0, 1114121, 1, 0, 1114122, 0, 0, 1114131, 0, 0, 1114132, 1, 0, 1179657, 1, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 1, 0 )
+
+[node name="Key_Sign" parent="." index="6" instance=ExtResource( 1 )]
+position = Vector2( 552, 312 )
+scale = Vector2( 3, 3 )
 [connection signal="change_item_entity" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
 [connection signal="unlocking" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_unlocking"]
 [connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
