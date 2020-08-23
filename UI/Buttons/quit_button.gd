@@ -11,4 +11,5 @@ func _ready():
 	self.connect("pressed", self, "quit")
 
 func quit():
+	SoundManager.play_ui_button()
 	get_tree().quit()

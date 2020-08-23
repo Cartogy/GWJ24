@@ -24,6 +24,7 @@ func _on_Area2D_body_entered(body):
 	if cur_state != State.ON:
 		cur_state = State.ON
 		$AnimatedSprite.play("On")
+		SoundManager.play_game_switch()
 		if affect.size() > 0:
 			for a in affect:
 				a.switch_activated()

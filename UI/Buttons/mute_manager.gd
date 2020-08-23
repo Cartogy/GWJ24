@@ -32,7 +32,16 @@ func toggle():
 			remove_child(mute_off_button)
 			add_child(mute_on_button)
 			current_state = MuteState.ON
+			volume_toggle()
 		MuteState.ON:
 			remove_child(mute_on_button)
 			add_child(mute_off_button)
 			current_state = MuteState.OFF
+			volume_toggle()
+
+func volume_toggle():
+	ConfigManager.sound_on = !ConfigManager.sound_on
+	ConfigManager.music_on = !ConfigManager.music_on
+	ConfigManager.save_config()
+	SoundManager.set_volume()
+	SoundManager.play_ui_button()

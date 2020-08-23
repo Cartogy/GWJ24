@@ -14,17 +14,17 @@ func _process(delta):
 	animation_direction()
 
 func animation_direction():
-	var degrees = degree_between_vectors(vector_entity.get_forward_v(), 
+	var degrees = degree_between_vectors(vector_entity.get_forward_v(),
 									get_cast_to())
-									
+
 	var forward_v = vector_entity.get_forward_v()
-	
+
 	# Flip sprites
 	if forward_v.x < 0:
 		anim.flip_h = true
-	else: 
+	else:
 		anim.flip_h = false
-		
+
 	# Choose Top or Bottom sprites
 	if forward_v.y < 0:	# Top
 		if degrees <= degree_apart:
@@ -48,16 +48,16 @@ func animation_direction():
 			anim.play("bottom_right")
 		elif degrees > 135 + degree_apart && degree_apart <= 180.0:
 			anim.play("side")
-		
 
-	
+
+
 func degree_between_vectors(f_v: Vector2, d_v: Vector2) -> float:
 	var dot = f_v.dot(d_v)
 	var fv_length = f_v.length() * d_v.length()
 	if fv_length > 0:
 		var rad = acos(dot / fv_length)
-	
+
 		var deg = rad * (180.0 / PI)
 		return deg
-	
+
 	return 0.0
