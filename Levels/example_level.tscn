@@ -25,7 +25,7 @@ scale = Vector2( 4, 4 )
 [node name="DuckChickController" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1.25992, 0 )
 
-[node name="Data" parent="DuckChickController/PlayerController" index="0"]
+[node name="Data" parent="DuckChickController/PlayerController" index="2"]
 duck_dettached_speed = 150.0
 
 [node name="Duck" parent="DuckChickController" index="1"]

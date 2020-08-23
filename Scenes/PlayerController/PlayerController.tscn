@@ -1,13 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/PlayerController/player_controller.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerController/chick_controller.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/StateMachine/state_machine.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/PlayerController/duck_controller.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/PlayerController/data.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/ToggleStateCommand/ToggleStateCommand.tscn" type="PackedScene" id=6]
 
 [node name="PlayerController" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="ControlToggleCmd" parent="." instance=ExtResource( 6 )]
+state_0 = "Duck"
+state_1 = "Flock"
+start_state = "Duck"
+
+[node name="DucklingQuackCmd" parent="." instance=ExtResource( 6 )]
+state_0 = "Attached"
+state_1 = "Dettached"
+start_state = "Attached"
 
 [node name="Data" type="Node" parent="."]
 script = ExtResource( 5 )

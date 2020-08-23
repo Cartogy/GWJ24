@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Chick/chick.gd"
 }, {
+"base": "Node",
+"class": "DialogueSequence",
+"language": "GDScript",
+"path": "res://Scenes/DialogueSystem/DialogueSequence/dialogue_sequence.gd"
+}, {
 "base": "",
 "class": "Duck",
 "language": "GDScript",
@@ -69,6 +74,7 @@ _global_script_class_icons={
 "Boid": "",
 "Box": "",
 "Chick": "",
+"DialogueSequence": "",
 "Duck": "",
 "Effect": "",
 "EffectNode": "",

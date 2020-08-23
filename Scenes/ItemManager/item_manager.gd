@@ -12,9 +12,14 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_pressed("drop_item"):
-		if cur_entity_item.has_item:
-			activate_item()
+	if event.is_action_pressed("item_cmd") && cur_entity_item.has_item:
+		if cur_entity_item.near_lock == null:	# Needs refactoring
+			activate_item()	#Drop item
+			print("Drop")
+		else:
+			print("Unlock")
+			unlock_lock()
+			#emit_signal("unlocking")
 
 
 func _physics_process(delta):
@@ -38,7 +43,7 @@ func update_entity_position(pos):
 
 func deactivate_item(item: Item):
 	item.set_physics_process(false)
-
+	item.picked = true
 	cur_entity_item.current_item = item
 	cur_entity_item.has_item = true
 
@@ -47,6 +52,7 @@ func activate_item():
 	cur_entity_item.current_item.global_position = cur_entity_item.get_entity_position()
 	cur_entity_item.has_item = false
 	cur_entity_item.current_item.get_node("CollisionShape2D").set_deferred("disabled", false)	# Let the item have and effect on switches
+	cur_entity_item.current_item.picked = false
 	cur_entity_item.current_item = null
 
 func pickup_item(item):
@@ -71,6 +77,7 @@ func unlock_lock():
 			cur_entity_item.set_current_item(null)
 			cur_entity_item.has_item = false
 			cur_entity_item.set_lock(null)
+			item.queue_free()	# Remove item
 
 func _on_PlayerController_change_item_entity(state):
 	set_entity_state(state)
@@ -102,4 +109,6 @@ func _on_Lock_notify_entity_left():
 
 
 func _on_PlayerController_unlocking():
-	unlock_lock()
+	if cur_entity_item.near_lock != null:
+		unlock_lock()
+

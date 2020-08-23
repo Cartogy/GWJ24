@@ -29,7 +29,8 @@ func unlock():
 
 # Notify Item Manager to update the DataEntities
 func _on_Area2D_body_entered(body):
-	emit_signal("notify_entity_is_near", self)
+	if body as Duck || body as Chick:
+		emit_signal("notify_entity_is_near", self)
 
 
 func _on_Area2D_body_exited(body):
