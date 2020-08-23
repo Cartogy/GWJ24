@@ -34,6 +34,11 @@ position = Vector2( 525.995, 544.646 )
 [node name="PlayerController" parent="DuckandChicks" index="0"]
 position = Vector2( 4.6521, 4.54199 )
 
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
+duck_attached_speed = 95.0
+duck_dettached_speed = 125.0
+chick_horde_speed = 155.0
+
 [node name="Duck" parent="DuckandChicks" index="1"]
 position = Vector2( 1.8961, 19.2644 )
 
@@ -90,19 +95,15 @@ switch_path = NodePath("../../Switches/Switch4")
 
 [node name="Lock_Barrier1" parent="LockBarriers" index="0" instance=ExtResource( 8 )]
 position = Vector2( 411, 189 )
-key_path = NodePath("../../Keys/Key3")
 
 [node name="Lock_Barrier2" parent="LockBarriers" index="1" instance=ExtResource( 8 )]
 position = Vector2( 635, 189 )
-key_path = NodePath("../../Keys/Key1")
 
 [node name="Lock_Barrier3" parent="LockBarriers" index="2" instance=ExtResource( 8 )]
 position = Vector2( 411, 400 )
-key_path = NodePath("../../Keys/Key2")
 
 [node name="Lock_Barrier4" parent="LockBarriers" index="3" instance=ExtResource( 8 )]
 position = Vector2( 635, 400 )
-key_path = NodePath("../../Keys/Key4")
 
 [node name="Keys" type="Node" parent="." index="4"]
 
@@ -151,10 +152,6 @@ tile_data = PoolIntArray( -196596, 1, 0, -196595, 1, 0, -196594, 1, 0, -196593, 
 [connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_left"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
 [connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_left"]
-[connection signal="notify_item_manager" from="Keys/Key1" to="ItemManager" method="_on_Key1_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key2" to="ItemManager" method="_on_Key2_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key3" to="ItemManager" method="_on_Key3_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key4" to="ItemManager" method="_on_Key4_notify_item_manager"]
 
 [editable path="DuckandChicks"]
 
