@@ -23,6 +23,7 @@ func _ready():
 	set_volume()
 
 func play_random_music():
+	music_player.stop()
 	var temp = floor(rand_range(0, possible_music.size()))
 	music_player.stream = possible_music[temp]
 	music_player.play()

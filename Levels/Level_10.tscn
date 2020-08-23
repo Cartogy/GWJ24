@@ -25,7 +25,7 @@ func _physics_process(delta):
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 85.1083, 21.5379 )
 
-[node name="Level_8" instance=ExtResource( 6 )]
+[node name="Level_10" instance=ExtResource( 6 )]
 
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 490.517, 231.338 )
@@ -33,19 +33,8 @@ position = Vector2( 490.517, 231.338 )
 [node name="PlayerController" parent="DuckandChicks" index="0"]
 position = Vector2( 0.867249, 8.46161 )
 
-[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
-duck_attached_speed = 95.0
-duck_dettached_speed = 125.0
-chick_horde_speed = 155.0
-
-[node name="StateMachine" parent="DuckandChicks/PlayerController" index="3"]
-START_STATE = NodePath("../../../../Level_8/DuckandChicks/PlayerController/StateMachine/DuckMovement")
-
 [node name="Duck" parent="DuckandChicks" index="1"]
 position = Vector2( -3.54199, 1.51697 )
-
-[node name="FlockManager" parent="DuckandChicks" index="2"]
-main_duck_path = NodePath("../../../Level_8/DuckandChicks/Duck")
 
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
 position = Vector2( 478.479, 503.668 )
@@ -80,76 +69,76 @@ scale = Vector2( 4, 4 )
 position = Vector2( 112.161, 47.7424 )
 scale = Vector2( 5, 5.967 )
 effect_type = 1
-switch_path = NodePath("../../../Level_8/Switches/Switch1")
+switch_path = NodePath("../../Switches/Switch1")
 
 [node name="DoorEffect2" parent="Doors" index="1" instance=ExtResource( 4 )]
 position = Vector2( 912.379, 48.1352 )
 scale = Vector2( 5, 5.953 )
 effect_type = 1
-switch_path = NodePath("../../Switches/Switch2")
+switch_path = NodePath("../../../Level_10/Switches/Switch2")
 
 [node name="DoorEffect3" parent="Doors" index="2" instance=ExtResource( 4 )]
 position = Vector2( 113.081, 559.838 )
 scale = Vector2( 5, 5.937 )
 effect_type = 1
-switch_path = NodePath("../../Switches/Switch3")
+switch_path = NodePath("../../../Level_10/Switches/Switch3")
 
 [node name="DoorEffect4" parent="Doors" index="3" instance=ExtResource( 4 )]
 position = Vector2( 912.379, 561.028 )
 scale = Vector2( 5, 6.089 )
 effect_type = 1
-switch_path = NodePath("../../Switches/Switch4")
+switch_path = NodePath("../../../Level_10/Switches/Switch4")
 
 [node name="Lock_Barriers" type="Node" parent="." index="3"]
 
 [node name="Lock_Barrier1" parent="Lock_Barriers" index="0" instance=ExtResource( 1 )]
 position = Vector2( 345, 510 )
 scale = Vector2( 2, 2 )
-key_path = NodePath("../../Keys/Key2")
+key_path = NodePath("../../../Level_10/Keys/Key2")
 
 [node name="Lock_Barrier2" parent="Lock_Barriers" index="1" instance=ExtResource( 1 )]
 position = Vector2( 500, 140 )
 scale = Vector2( 1.5, 1.5 )
-key_path = NodePath("../../Keys/Key4")
+key_path = NodePath("../../../Level_10/Keys/Key4")
 
 [node name="Lock_Barrier3" parent="Lock_Barriers" index="2" instance=ExtResource( 1 )]
 position = Vector2( 500, 37 )
 scale = Vector2( 1.5, 1.5 )
-key_path = NodePath("../../Keys/Key1")
+key_path = NodePath("../../../Level_10/Keys/Key1")
 
 [node name="Lock_Barrier4" parent="Lock_Barriers" index="3" instance=ExtResource( 1 )]
 position = Vector2( 690, 510 )
 scale = Vector2( 2, 2 )
-key_path = NodePath("../../Keys/Key3")
+key_path = NodePath("../../../Level_10/Keys/Key3")
 
 [node name="Keys" type="Node" parent="." index="4"]
 
 [node name="Key1" parent="Keys" index="0" instance=ExtResource( 2 )]
 position = Vector2( 60.333, 46.7919 )
 item_name = "Key"
-item_manager_path = NodePath("../../ItemManager")
+item_manager_path = NodePath("../../../Level_10/ItemManager")
 
 [node name="Key2" parent="Keys" index="1" instance=ExtResource( 2 )]
 position = Vector2( 962.995, 48.9109 )
 item_name = "Key"
-item_manager_path = NodePath("../../ItemManager")
+item_manager_path = NodePath("../../../Level_10/ItemManager")
 
 [node name="Key3" parent="Keys" index="2" instance=ExtResource( 2 )]
 position = Vector2( 69.8681, 554.275 )
 item_name = "Key"
-item_manager_path = NodePath("../../ItemManager")
+item_manager_path = NodePath("../../../Level_10/ItemManager")
 
 [node name="Key4" parent="Keys" index="3" instance=ExtResource( 2 )]
 position = Vector2( 965.114, 557.453 )
 item_name = "Key"
-item_manager_path = NodePath("../../ItemManager")
+item_manager_path = NodePath("../../../Level_10/ItemManager")
 
 [node name="ItemManager" parent="." index="5" instance=ExtResource( 5 )]
 
 [node name="WorldComplete" parent="." index="6"]
 position = Vector2( 493.7, -42.1984 )
 script = SubResource( 1 )
-next_world = "res://Levels/Level_1.tscn"
+next_world = "res://Scenes/EndCredits/EndCredits.tscn"
 
 [node name="CollisionShape2D" parent="WorldComplete" index="0"]
 position = Vector2( 3, 10 )
@@ -177,3 +166,5 @@ tile_data = PoolIntArray( -131059, 1, 0, -131058, 1, 0, -131057, 1, 0, -131056, 
 [editable path="DuckandChicks"]
 
 [editable path="DuckandChicks/PlayerController"]
+
+[editable path="Lock_Barriers/Lock_Barrier1"]

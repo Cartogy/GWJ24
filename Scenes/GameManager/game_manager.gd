@@ -55,3 +55,4 @@ func _on_World_Complete(next_level_path):
 	#remove_child(prev_level)
 	prev_level.queue_free()
 	add_child(current_level)
+	play_level_music()
