@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Effects/LockEffects/Lock_Barrier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Parent_level.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/ItemManager/ItemManager.tscn" type="PackedScene" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export (String, FILE, \"*.tscn\") var next_world
+
+func _physics_process(delta):
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		if body.name == \"Duck\":
+			if next_world:
+				get_tree().change_scene(next_world)
+#			else: #Go back to menu?
+#				pass
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 85.1083, 21.5379 )
+
+[node name="Level_8" instance=ExtResource( 4 )]
+
+[node name="DuckandChicks" parent="." index="0"]
+position = Vector2( 490.517, 231.338 )
+
+[node name="PlayerController" parent="DuckandChicks" index="0"]
+position = Vector2( 0.867249, 8.46161 )
+
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
+duck_attached_speed = 95.0
+duck_dettached_speed = 125.0
+chick_horde_speed = 155.0
+
+[node name="StateMachine" parent="DuckandChicks/PlayerController" index="3"]
+START_STATE = NodePath("../../../../Level_8/DuckandChicks/PlayerController/StateMachine/DuckMovement")
+
+[node name="Duck" parent="DuckandChicks" index="1"]
+position = Vector2( -3.54199, 1.51697 )
+
+[node name="FlockManager" parent="DuckandChicks" index="2"]
+main_duck_path = NodePath("../../../Level_8/DuckandChicks/Duck")
+
+[node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
+position = Vector2( 478.479, 503.668 )
+
+[node name="Chick2" parent="DuckandChicks/FlockManager" index="1"]
+position = Vector2( 532.397, 516.952 )
+
+[node name="Chick3" parent="DuckandChicks/FlockManager" index="2"]
+position = Vector2( 534.179, 491.115 )
+
+[node name="Switches" type="Node" parent="." index="1"]
+
+[node name="Switch1" parent="Switches" index="0" instance=ExtResource( 1 )]
+position = Vector2( 445, 472 )
+scale = Vector2( 4, 4 )
+
+[node name="Switch2" parent="Switches" index="1" instance=ExtResource( 1 )]
+position = Vector2( 575, 472 )
+scale = Vector2( 4, 4 )
+
+[node name="Switch3" parent="Switches" index="2" instance=ExtResource( 1 )]
+position = Vector2( 445, 563 )
+scale = Vector2( 4, 4 )
+
+[node name="Switch4" parent="Switches" index="3" instance=ExtResource( 1 )]
+position = Vector2( 575, 563 )
+scale = Vector2( 4, 4 )
+
+[node name="Doors" type="Node" parent="." index="2"]
+
+[node name="DoorEffect1" parent="Doors" index="0" instance=ExtResource( 5 )]
+position = Vector2( 112.161, 47.7424 )
+scale = Vector2( 5, 5.967 )
+effect_type = 1
+switch_path = NodePath("../../../Level_8/Switches/Switch1")
+
+[node name="DoorEffect2" parent="Doors" index="1" instance=ExtResource( 5 )]
+position = Vector2( 912.379, 48.1352 )
+scale = Vector2( 5, 5.953 )
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch2")
+
+[node name="DoorEffect3" parent="Doors" index="2" instance=ExtResource( 5 )]
+position = Vector2( 113.081, 559.838 )
+scale = Vector2( 5, 5.937 )
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch3")
+
+[node name="DoorEffect4" parent="Doors" index="3" instance=ExtResource( 5 )]
+position = Vector2( 912.379, 561.028 )
+scale = Vector2( 5, 6.089 )
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch4")
+
+[node name="Lock_Barriers" type="Node" parent="." index="3"]
+
+[node name="Lock_Barrier1" parent="Lock_Barriers" index="0" instance=ExtResource( 3 )]
+position = Vector2( 345, 510 )
+scale = Vector2( 2, 2 )
+key_path = NodePath("../../Keys/Key2")
+
+[node name="Lock_Barrier2" parent="Lock_Barriers" index="1" instance=ExtResource( 3 )]
+position = Vector2( 500, 140 )
+scale = Vector2( 1.5, 1.5 )
+key_path = NodePath("../../Keys/Key4")
+
+[node name="Lock_Barrier3" parent="Lock_Barriers" index="2" instance=ExtResource( 3 )]
+position = Vector2( 500, 37 )
+scale = Vector2( 1.5, 1.5 )
+key_path = NodePath("../../Keys/Key1")
+
+[node name="Lock_Barrier4" parent="Lock_Barriers" index="3" instance=ExtResource( 3 )]
+position = Vector2( 690, 510 )
+scale = Vector2( 2, 2 )
+key_path = NodePath("../../Keys/Key3")
+
+[node name="Keys" type="Node" parent="." index="4"]
+
+[node name="Key1" parent="Keys" index="0" instance=ExtResource( 2 )]
+position = Vector2( 60.333, 46.7919 )
+item_name = "Key"
+item_manager_path = NodePath("../../ItemManager")
+
+[node name="Key2" parent="Keys" index="1" instance=ExtResource( 2 )]
+position = Vector2( 962.995, 48.9109 )
+item_name = "Key"
+item_manager_path = NodePath("../../ItemManager")
+
+[node name="Key3" parent="Keys" index="2" instance=ExtResource( 2 )]
+position = Vector2( 69.8681, 554.275 )
+item_name = "Key"
+item_manager_path = NodePath("../../ItemManager")
+
+[node name="Key4" parent="Keys" index="3" instance=ExtResource( 2 )]
+position = Vector2( 965.114, 557.453 )
+item_name = "Key"
+item_manager_path = NodePath("../../ItemManager")
+
+[node name="ItemManager" parent="." index="5" instance=ExtResource( 6 )]
+
+[node name="WorldComplete" parent="." index="6"]
+position = Vector2( 493.7, -42.1984 )
+script = SubResource( 1 )
+next_world = "res://Levels/Level_1.tscn"
+
+[node name="CollisionShape2D" parent="WorldComplete" index="0"]
+position = Vector2( 3, 10 )
+shape = SubResource( 2 )
+
+[node name="TileMap" parent="." index="7"]
+modulate = Color( 1, 1, 1, 1 )
+tile_data = PoolIntArray( -131059, 1, 0, -131058, 1, 0, -131057, 1, 0, -131056, 1, 0, -131055, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 35, 0, -65521, 36, 0, -65520, 37, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 1, 0, -65509, 1, 0, -65508, 1, 0, -65507, 1, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, 65535, 1, 0, 0, 9, 0, 1, 19, 0, 2, 23, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 0, 0, 12, 1, 0, 13, 1, 0, 14, 9, 0, 15, 9, 0, 16, 9, 0, 17, 1, 0, 18, 1, 0, 19, 0, 0, 20, 9, 0, 21, 9, 0, 22, 9, 0, 23, 9, 0, 24, 9, 0, 25, 9, 0, 26, 9, 0, 27, 9, 0, 28, 9, 0, 29, 19, 0, 30, 23, 0, 31, 9, 0, 32, 1, 0, 131071, 1, 0, 65536, 9, 0, 65537, 26, 0, 65538, 25, 0, 65539, 9, 0, 65540, 9, 0, 65541, 9, 0, 65542, 9, 0, 65543, 9, 0, 65544, 9, 0, 65545, 9, 0, 65546, 9, 0, 65547, 9, 0, 65548, 0, 0, 65549, 0, 0, 65550, 9, 0, 65551, 9, 0, 65552, 9, 0, 65553, 0, 0, 65554, 0, 0, 65555, 9, 0, 65556, 9, 0, 65557, 9, 0, 65558, 9, 0, 65559, 9, 0, 65560, 9, 0, 65561, 9, 0, 65562, 9, 0, 65563, 9, 0, 65564, 9, 0, 65565, 26, 0, 65566, 25, 0, 65567, 9, 0, 65568, 1, 0, 196607, 1, 0, 131072, 9, 0, 131073, 9, 0, 131074, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131078, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 9, 0, 131082, 9, 0, 131083, 9, 0, 131084, 9, 0, 131085, 0, 0, 131086, 9, 0, 131087, 9, 0, 131088, 9, 0, 131089, 0, 0, 131090, 9, 0, 131091, 9, 0, 131092, 9, 0, 131093, 9, 0, 131094, 9, 0, 131095, 9, 0, 131096, 9, 0, 131097, 9, 0, 131098, 9, 0, 131099, 9, 0, 131100, 9, 0, 131101, 9, 0, 131102, 9, 0, 131103, 9, 0, 131104, 1, 0, 262143, 1, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 9, 0, 196617, 9, 0, 196618, 9, 0, 196619, 9, 0, 196620, 9, 0, 196621, 0, 0, 196622, 9, 0, 196623, 9, 0, 196624, 9, 0, 196625, 0, 0, 196626, 9, 0, 196627, 9, 0, 196628, 9, 0, 196629, 9, 0, 196630, 9, 0, 196631, 9, 0, 196632, 9, 0, 196633, 9, 0, 196634, 9, 0, 196635, 9, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 196640, 1, 0, 327679, 1, 0, 262144, 9, 0, 262145, 9, 0, 262146, 9, 0, 262147, 9, 0, 262148, 9, 0, 262149, 9, 0, 262150, 9, 0, 262151, 9, 0, 262152, 9, 0, 262153, 9, 0, 262154, 9, 0, 262155, 9, 0, 262156, 9, 0, 262157, 0, 0, 262158, 9, 0, 262159, 9, 0, 262160, 9, 0, 262161, 0, 0, 262162, 9, 0, 262163, 9, 0, 262164, 9, 0, 262165, 9, 0, 262166, 9, 0, 262167, 9, 0, 262168, 9, 0, 262169, 9, 0, 262170, 9, 0, 262171, 9, 0, 262172, 9, 0, 262173, 9, 0, 262174, 9, 0, 262175, 9, 0, 262176, 1, 0, 393215, 1, 0, 327680, 9, 0, 327681, 9, 0, 327682, 9, 0, 327683, 9, 0, 327684, 9, 0, 327685, 9, 0, 327686, 9, 0, 327687, 9, 0, 327688, 9, 0, 327689, 9, 0, 327690, 9, 0, 327691, 9, 0, 327692, 9, 0, 327693, 0, 0, 327694, 9, 0, 327695, 9, 0, 327696, 9, 0, 327697, 0, 0, 327698, 9, 0, 327699, 9, 0, 327700, 9, 0, 327701, 9, 0, 327702, 9, 0, 327703, 9, 0, 327704, 9, 0, 327705, 9, 0, 327706, 9, 0, 327707, 9, 0, 327708, 9, 0, 327709, 9, 0, 327710, 9, 0, 327711, 9, 0, 327712, 1, 0, 458751, 1, 0, 393216, 9, 0, 393217, 9, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393225, 9, 0, 393226, 9, 0, 393227, 9, 0, 393228, 9, 0, 393229, 9, 0, 393230, 9, 0, 393231, 9, 0, 393232, 9, 0, 393233, 9, 0, 393234, 9, 0, 393235, 9, 0, 393236, 9, 0, 393237, 9, 0, 393238, 9, 0, 393239, 9, 0, 393240, 9, 0, 393241, 9, 0, 393242, 9, 0, 393243, 9, 0, 393244, 9, 0, 393245, 9, 0, 393246, 9, 0, 393247, 9, 0, 393248, 1, 0, 524287, 1, 0, 458752, 9, 0, 458753, 9, 0, 458754, 9, 0, 458755, 9, 0, 458756, 9, 0, 458757, 9, 0, 458758, 9, 0, 458759, 12, 0, 458760, 18, 0, 458761, 18, 0, 458762, 16, 0, 458763, 9, 0, 458764, 9, 0, 458765, 9, 0, 458766, 9, 0, 458767, 9, 0, 458768, 9, 0, 458769, 9, 0, 458770, 9, 0, 458771, 9, 0, 458772, 9, 0, 458773, 9, 0, 458774, 9, 0, 458775, 9, 0, 458776, 9, 0, 458777, 9, 0, 458778, 9, 0, 458779, 9, 0, 458780, 9, 0, 458781, 9, 0, 458782, 9, 0, 458783, 9, 0, 458784, 1, 0, 589823, 1, 0, 524288, 9, 0, 524289, 9, 0, 524290, 9, 0, 524291, 9, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524302, 9, 0, 524303, 9, 0, 524304, 9, 0, 524305, 9, 0, 524306, 9, 0, 524307, 9, 0, 524308, 9, 0, 524309, 9, 0, 524310, 9, 0, 524311, 9, 0, 524312, 9, 0, 524313, 9, 0, 524314, 9, 0, 524315, 9, 0, 524316, 9, 0, 524317, 9, 0, 524318, 9, 0, 524319, 9, 0, 524320, 1, 0, 655359, 1, 0, 589824, 9, 0, 589825, 9, 0, 589826, 9, 0, 589827, 9, 0, 589828, 9, 0, 589829, 9, 0, 589830, 9, 0, 589831, 9, 0, 589832, 9, 0, 589833, 9, 0, 589834, 9, 0, 589835, 9, 0, 589836, 9, 0, 589837, 9, 0, 589838, 9, 0, 589839, 9, 0, 589840, 9, 0, 589841, 9, 0, 589842, 9, 0, 589843, 9, 0, 589844, 9, 0, 589845, 9, 0, 589846, 9, 0, 589847, 9, 0, 589848, 9, 0, 589849, 9, 0, 589850, 9, 0, 589851, 9, 0, 589852, 9, 0, 589853, 9, 0, 589854, 9, 0, 589855, 9, 0, 589856, 1, 0, 720895, 1, 0, 655360, 9, 0, 655361, 9, 0, 655362, 9, 0, 655363, 9, 0, 655364, 9, 0, 655365, 9, 0, 655366, 9, 0, 655367, 9, 0, 655368, 9, 0, 655369, 9, 0, 655370, 9, 0, 655371, 9, 0, 655372, 9, 0, 655373, 9, 0, 655374, 9, 0, 655375, 9, 0, 655376, 9, 0, 655377, 9, 0, 655378, 9, 0, 655379, 9, 0, 655380, 9, 0, 655381, 9, 0, 655382, 9, 0, 655383, 9, 0, 655384, 9, 0, 655385, 9, 0, 655386, 9, 0, 655387, 9, 0, 655388, 9, 0, 655389, 9, 0, 655390, 9, 0, 655391, 9, 0, 655392, 1, 0, 786431, 1, 0, 720896, 9, 0, 720897, 12, 0, 720898, 18, 0, 720899, 18, 0, 720900, 18, 0, 720901, 18, 0, 720902, 16, 0, 720903, 9, 0, 720904, 9, 0, 720905, 9, 0, 720906, 9, 0, 720907, 9, 0, 720908, 9, 0, 720909, 9, 0, 720910, 9, 0, 720911, 9, 0, 720912, 9, 0, 720913, 9, 0, 720914, 9, 0, 720915, 9, 0, 720916, 9, 0, 720917, 9, 0, 720918, 9, 0, 720919, 12, 0, 720920, 17, 0, 720921, 17, 0, 720922, 18, 0, 720923, 18, 0, 720924, 16, 0, 720925, 9, 0, 720926, 9, 0, 720927, 9, 0, 720928, 1, 0, 851967, 1, 0, 786432, 9, 0, 786433, 9, 0, 786434, 9, 0, 786435, 9, 0, 786436, 9, 0, 786437, 9, 0, 786438, 9, 0, 786439, 9, 0, 786440, 9, 0, 786441, 9, 0, 786442, 9, 0, 786443, 9, 0, 786444, 9, 0, 786445, 9, 0, 786446, 9, 0, 786447, 9, 0, 786448, 9, 0, 786449, 9, 0, 786450, 9, 0, 786451, 9, 0, 786452, 9, 0, 786453, 9, 0, 786454, 9, 0, 786455, 9, 0, 786456, 9, 0, 786457, 9, 0, 786458, 9, 0, 786459, 9, 0, 786460, 9, 0, 786461, 9, 0, 786462, 9, 0, 786463, 9, 0, 786464, 1, 0, 917503, 1, 0, 851968, 9, 0, 851969, 9, 0, 851970, 9, 0, 851971, 9, 0, 851972, 9, 0, 851973, 9, 0, 851974, 9, 0, 851975, 9, 0, 851976, 9, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0, 851992, 9, 0, 851993, 9, 0, 851994, 9, 0, 851995, 9, 0, 851996, 9, 0, 851997, 9, 0, 851998, 9, 0, 851999, 9, 0, 852000, 1, 0, 983039, 1, 0, 917504, 9, 0, 917505, 9, 0, 917506, 9, 0, 917507, 9, 0, 917508, 9, 0, 917509, 9, 0, 917510, 9, 0, 917511, 9, 0, 917512, 9, 0, 917513, 9, 0, 917514, 9, 0, 917515, 9, 0, 917516, 9, 0, 917517, 19, 0, 917518, 20, 0, 917519, 20, 0, 917520, 21, 0, 917521, 21, 0, 917522, 23, 0, 917523, 9, 0, 917524, 9, 0, 917525, 9, 0, 917526, 9, 0, 917527, 9, 0, 917528, 9, 0, 917529, 9, 0, 917530, 9, 0, 917531, 9, 0, 917532, 9, 0, 917533, 9, 0, 917534, 9, 0, 917535, 9, 0, 917536, 1, 0, 1048575, 1, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 9, 0, 983045, 9, 0, 983046, 9, 0, 983047, 9, 0, 983048, 9, 0, 983049, 9, 0, 983050, 9, 0, 983051, 9, 0, 983052, 9, 0, 983053, 27, 0, 983054, 14, 0, 983055, 14, 0, 983056, 14, 0, 983057, 14, 0, 983058, 24, 0, 983059, 9, 0, 983061, 9, 0, 983063, 9, 0, 983064, 9, 0, 983065, 9, 0, 983066, 9, 0, 983067, 9, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 1, 0, 1114111, 1, 0, 1048576, 9, 0, 1048577, 19, 0, 1048578, 23, 0, 1048579, 9, 0, 1048580, 9, 0, 1048581, 9, 0, 1048582, 9, 0, 1048583, 9, 0, 1048584, 9, 0, 1048585, 9, 0, 1048587, 9, 0, 1048588, 9, 0, 1048589, 27, 0, 1048590, 14, 0, 1048591, 14, 0, 1048592, 14, 0, 1048593, 14, 0, 1048594, 24, 0, 1048595, 9, 0, 1048596, 9, 0, 1048597, 9, 0, 1048598, 9, 0, 1048599, 9, 0, 1048600, 9, 0, 1048601, 9, 0, 1048602, 9, 0, 1048603, 9, 0, 1048604, 9, 0, 1048605, 19, 0, 1048606, 23, 0, 1048607, 9, 0, 1048608, 1, 0, 1179647, 1, 0, 1114112, 9, 0, 1114113, 26, 0, 1114114, 25, 0, 1114115, 9, 0, 1114116, 9, 0, 1114117, 9, 0, 1114118, 9, 0, 1114119, 9, 0, 1114120, 9, 0, 1114121, 9, 0, 1114122, 9, 0, 1114123, 9, 0, 1114124, 9, 0, 1114125, 27, 0, 1114126, 14, 0, 1114127, 14, 0, 1114128, 14, 0, 1114129, 9, 0, 1114130, 24, 0, 1114131, 9, 0, 1114132, 9, 0, 1114135, 9, 0, 1114136, 9, 0, 1114137, 9, 0, 1114138, 9, 0, 1114139, 9, 0, 1114140, 9, 0, 1114141, 26, 0, 1114142, 25, 0, 1114143, 9, 0, 1114144, 1, 0, 1245183, 1, 0, 1179648, 9, 0, 1179649, 9, 0, 1179650, 9, 0, 1179651, 9, 0, 1179652, 9, 0, 1179653, 9, 0, 1179654, 9, 0, 1179655, 9, 0, 1179656, 9, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 26, 0, 1179662, 28, 0, 1179663, 28, 0, 1179664, 29, 0, 1179665, 29, 0, 1179666, 25, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 9, 0, 1179673, 9, 0, 1179674, 9, 0, 1179675, 9, 0, 1179676, 9, 0, 1179677, 9, 0, 1179678, 9, 0, 1179679, 9, 0, 1179680, 1, 0, 1310719, 1, 0, 1245184, 1, 0, 1245185, 1, 0, 1245186, 1, 0, 1245187, 1, 0, 1245188, 1, 0, 1245189, 1, 0, 1245190, 1, 0, 1245191, 1, 0, 1245192, 1, 0, 1245193, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 1245202, 1, 0, 1245203, 1, 0, 1245204, 1, 0, 1245205, 1, 0, 1245206, 1, 0, 1245207, 1, 0, 1245208, 1, 0, 1245209, 1, 0, 1245210, 1, 0, 1245211, 1, 0, 1245212, 1, 0, 1245213, 1, 0, 1245214, 1, 0, 1245215, 1, 0, 1245216, 1, 0 )
+[connection signal="change_item_entity" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
+[connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
+[connection signal="update_entity_position" from="DuckandChicks/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
+[connection signal="notify_entity_is_near" from="Lock_Barriers/Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="Lock_Barriers/Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_is_near" from="Lock_Barriers/Lock_Barrier2" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="Lock_Barriers/Lock_Barrier2" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_is_near" from="Lock_Barriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="Lock_Barriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_is_near" from="Lock_Barriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="Lock_Barriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_item_manager" from="Keys/Key1" to="ItemManager" method="_on_Item_notify_item_manager"]
+[connection signal="notify_item_manager" from="Keys/Key2" to="ItemManager" method="_on_Item_notify_item_manager"]
+[connection signal="notify_item_manager" from="Keys/Key3" to="ItemManager" method="_on_Item_notify_item_manager"]
+[connection signal="notify_item_manager" from="Keys/Key4" to="ItemManager" method="_on_Item_notify_item_manager"]
+
+[editable path="DuckandChicks"]
+
+[editable path="DuckandChicks/PlayerController"]
