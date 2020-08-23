@@ -25,7 +25,7 @@ func _input(event):
 
 func _on_Area2D_body_entered(body):
 	if body as Duck || body as Chick:
-		
+
 		entity_near = true
 		print(body.name)
 

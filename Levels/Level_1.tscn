@@ -40,7 +40,6 @@ START_STATE = NodePath("../../../../Level_1/DuckandChicks/PlayerController/State
 position = Vector2( 456, 368 )
 
 [node name="FlockManager" parent="DuckandChicks" index="2"]
-speed_chick = 100.0
 main_duck_path = NodePath("../../../Level_1/DuckandChicks/Duck")
 
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
@@ -64,7 +63,7 @@ scale = Vector2( 45, 5 )
 switch_path = NodePath("../../Level_1/Switch1")
 
 [node name="DoorEffect2" parent="." index="3" instance=ExtResource( 3 )]
-position = Vector2( 474, 619 )
+position = Vector2( 474, 650 )
 scale = Vector2( 45, 5 )
 switch_path = NodePath("../../Level_1/Switch1")
 

@@ -51,6 +51,7 @@ func get_input_v2():
 				emit_signal("change_flock_state", "Stay")
 				emit_signal("change_duck_speed", $Data.duck_dettached_speed)
 				$DucklingQuackCmd.toggle_state()
+				SoundManager.play_chirp_stress()
 			else: # dettached
 				$StateMachine.change_state("ChickController")
 				emit_signal("change_flock_state", "Flock")
@@ -58,11 +59,7 @@ func get_input_v2():
 				emit_signal("change_item_entity", "Flock")
 				emit_signal("deactivate_duck")
 				$ControlToggleCmd.toggle_state()
-				print_debug("controlling chicks?")
-
-
-
-
+				SoundManager.play_chirp_calm()
 
 func _physics_process(delta):
 	get_input_v2()

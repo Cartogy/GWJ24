@@ -28,6 +28,11 @@ extents = Vector2( 36.9104, 61.7712 )
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 890, 308.909 )
 
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
+duck_attached_speed = 95.0
+duck_dettached_speed = 125.0
+chick_horde_speed = 155.0
+
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
 position = Vector2( 846.873, 255.353 )
 
