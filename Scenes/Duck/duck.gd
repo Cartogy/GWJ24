@@ -9,6 +9,7 @@ export (int) var radius
 export (float) var steering
 
 func _ready():
+	$CollisionShape2D.position = Vector2(0.3, -3)
 	if steering < 0.0:
 		steering = 0
 	elif steering > 1.0:
