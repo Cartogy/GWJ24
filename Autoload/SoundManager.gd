@@ -1,6 +1,6 @@
 extends Node
 
-onready var music_player = $MusicPlayer
+#onready var music_player = $MusicPlayer
 onready var sound_player = $SoundPlayer
 
 
@@ -18,7 +18,7 @@ var quack_secret = preload("res://Audio/SFX/Quack3.ogg")
 
 func _ready():
 #	randomize()
-#	set_volume()
+	set_volume()
 #	play_random_music()
 	
 	pass
@@ -29,6 +29,8 @@ func _ready():
 #	music_player.play()
 
 func play_chirp_calm():
+	if sound_player:
+		var sound_player = $SoundPlayer
 	sound_player.stream = chirp_calm
 	sound_player.play()
 
@@ -41,9 +43,6 @@ func play_quack_angry():
 	sound_player.play()
 
 func play_quack_neutral():
-	if !sound_player:
-		var sound_player = $SoundPlayer
-	print_debug(sound_player)
 	sound_player.stream = quack_neutral
 	sound_player.play()
 

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Quack1.ogg-ff98fe05ecf7de727c8699a021b6eb93.oggstr" 
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -61,4 +61,3 @@ func degree_between_vectors(f_v: Vector2, d_v: Vector2) -> float:
 		return deg
 	
 	return 0.0
-	
