@@ -68,7 +68,7 @@ margin_top = 64.0
 margin_right = 1024.0
 margin_bottom = 99.0
 custom_fonts/font = SubResource( 1 )
-text = "Thank you for playing Fluck of Ducks"
+text = "Thank you for playing Flock of Ducks"
 align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -109,7 +109,7 @@ margin_right = 1024.0
 margin_bottom = 161.0
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 0.913725, 0.572549, 1 )
-text = "Programmer: Jonas (Carto)"
+text = "Programmer: Jonas "
 align = 1
 
 [node name="GUI" type="Label" parent="VBoxContainer/VBoxContainer"]
@@ -117,7 +117,7 @@ margin_top = 186.0
 margin_right = 1024.0
 margin_bottom = 205.0
 custom_fonts/font = SubResource( 6 )
-text = "GUI/UI: Jonas (Carto)"
+text = "GUI/UI: Jonas "
 align = 1
 
 [node name="Audio" type="Label" parent="VBoxContainer/VBoxContainer"]
@@ -134,7 +134,7 @@ margin_top = 274.0
 margin_right = 1024.0
 margin_bottom = 293.0
 custom_fonts/font = SubResource( 8 )
-text = "Art: Jonas (Carto)"
+text = "Art: Jonas "
 align = 1
 
 [node name="GameDesign" type="Label" parent="VBoxContainer/VBoxContainer"]
