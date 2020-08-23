@@ -145,13 +145,13 @@ tile_data = PoolIntArray( -196596, 1, 0, -196595, 1, 0, -196594, 1, 0, -196593, 
 [connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
 [connection signal="update_entity_position" from="DuckandChicks/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_left"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier2" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier2" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier2" to="ItemManager" method="_on_Lock_notify_entity_left"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_left"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
+[connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_left"]
 
 [editable path="DuckandChicks"]
 
