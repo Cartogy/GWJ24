@@ -106,7 +106,6 @@ size_flags_vertical = 3
 custom_constants/separation = 23
 
 [node name="Start" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
-margin_bottom = 45.0
 script = ExtResource( 5 )
 begin_scene = "res://Scenes/GameManager/GameManager.tscn"
 
