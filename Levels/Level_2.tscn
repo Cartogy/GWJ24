@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Effects/effect_multiple.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Parent_level.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Key_Signs/Key_Sign_Duck.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Key_Signs/Key_Sign_Space.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Key_Signs/Key_Sign_Flock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Key_Signs/Key_Sign_Dettached.tscn" type="PackedScene" id=8]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
@@ -30,6 +31,11 @@ extents = Vector2( 36.9104, 61.7712 )
 
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 890, 308.909 )
+
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
+duck_attached_speed = 95.0
+duck_dettached_speed = 125.0
+chick_horde_speed = 155.0
 
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
 position = Vector2( 846.873, 255.353 )
@@ -76,6 +82,10 @@ scale = Vector2( 3, 3 )
 
 [node name="Key_Sign" parent="." index="8" instance=ExtResource( 5 )]
 position = Vector2( 496, 272 )
+scale = Vector2( 3, 3 )
+
+[node name="Key_Sign4" parent="." index="9" instance=ExtResource( 8 )]
+position = Vector2( 240, 360 )
 scale = Vector2( 3, 3 )
 
 [editable path="DuckandChicks"]
