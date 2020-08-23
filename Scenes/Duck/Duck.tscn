@@ -114,8 +114,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=22]
-extents = Vector2( 2.25194, 1.54411 )
+[sub_resource type="CircleShape2D" id=22]
+radius = 2.44488
 
 [node name="Duck" type="KinematicBody2D"]
 position = Vector2( 140.489, 164.061 )

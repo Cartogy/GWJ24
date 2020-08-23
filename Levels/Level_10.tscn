@@ -33,11 +33,6 @@ position = Vector2( 490.517, 231.338 )
 [node name="PlayerController" parent="DuckandChicks" index="0"]
 position = Vector2( 0.867249, 8.46161 )
 
-[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
-duck_attached_speed = 95.0
-duck_dettached_speed = 125.0
-chick_horde_speed = 155.0
-
 [node name="StateMachine" parent="DuckandChicks/PlayerController" index="3"]
 START_STATE = NodePath("../../../../Level_8/DuckandChicks/PlayerController/StateMachine/DuckMovement")
 
