@@ -65,7 +65,7 @@ scale = Vector2( 5, 14 )
 switch_path = NodePath("../../Level_1/Switch1")
 
 [node name="DoorEffect2" parent="." index="3" instance=ExtResource( 3 )]
-position = Vector2( 496, 615 )
+position = Vector2( 496, 592 )
 rotation = 1.5708
 scale = Vector2( 5, 14 )
 switch_path = NodePath("../../Level_1/Switch1")
