@@ -15,6 +15,7 @@ pause_mode = 1
 [node name="WorldComplete" type="Area2D" parent="."]
 position = Vector2( 417.192, 205.765 )
 z_index = -1
+collision_mask = 3
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -24,3 +25,5 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
+collision_layer = 1
+collision_mask = 3
