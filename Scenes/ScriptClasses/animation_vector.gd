@@ -50,8 +50,6 @@ func animation_direction():
 			anim.play("side")
 		
 
-	print(degrees)
-
 	
 func degree_between_vectors(f_v: Vector2, d_v: Vector2) -> float:
 	var dot = f_v.dot(d_v)

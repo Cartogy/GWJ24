@@ -32,8 +32,7 @@ func _input(event):
 				emit_signal("change_chick_speed", $Data.chick_attached_speed)
 			$DucklingQuackCmd.toggle_state()
 	# Command for both Duck Controller and Chick Controller
-	if event.is_action_pressed("unlocking"):
-		emit_signal("unlocking")
+
 
 # Direct control of Movement entities
 func get_input_v2():
