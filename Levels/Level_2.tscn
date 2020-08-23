@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Key_Signs/KeySigns.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Key_Signs/Key_Sign_Space.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Key_Signs/Key_Sign_Flock.tscn" type="PackedScene" id=7]
+
 [sub_resource type="GDScript" id=1]
 script/source = "extends Area2D
 export (String, FILE, \"*.tscn\") var next_world
@@ -19,8 +20,10 @@ func _physics_process(delta):
 #			else: #Go back to menu?
 #				pass
 "
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 36.9104, 61.7712 )
+
 [node name="Level_2" instance=ExtResource( 2 )]
 
 [node name="DuckandChicks" parent="." index="0"]
@@ -31,11 +34,14 @@ position = Vector2( 846.873, 255.353 )
 
 [node name="Chick2" parent="DuckandChicks/FlockManager" index="1"]
 position = Vector2( 900.791, 268.637 )
+
 [node name="Chick3" parent="DuckandChicks/FlockManager" index="2"]
 position = Vector2( 902.573, 241.801 )
+
 [node name="Switch1" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 761.969, 305.575 )
 scale = Vector2( 4, 4 )
+
 [node name="Switch2" parent="." index="2" instance=ExtResource( 4 )]
 position = Vector2( 298.069, 308.909 )
 scale = Vector2( 4, 4 )
@@ -45,10 +51,12 @@ position = Vector2( 117.608, 303.275 )
 scale = Vector2( 7, 10 )
 script = ExtResource( 1 )
 switch_path = [ NodePath("../Switch1"), NodePath("../Switch2") ]
+
 [node name="WorldComplete" parent="." index="4"]
 position = Vector2( 43.4369, 299.204 )
 script = SubResource( 1 )
 next_world = "res://Levels/Level_3.tscn"
+
 [node name="CollisionShape2D" parent="WorldComplete" index="0"]
 shape = SubResource( 2 )
 
@@ -69,4 +77,5 @@ position = Vector2( 528, 272 )
 scale = Vector2( 3, 3 )
 
 [editable path="DuckandChicks"]
+
 [editable path="DuckandChicks/PlayerController"]
