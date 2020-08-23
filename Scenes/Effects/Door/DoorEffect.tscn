@@ -1,26 +1,26 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Effects/Door/open_effect.gd" type="Script" id=1]
-[ext_resource path="res://Textures/Door/door_open.png" type="Texture" id=2]
-[ext_resource path="res://Textures/Door/door_closed.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Barrier/Barrier_Closed_v2.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Barrier/Barrier_Open_v2.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Effects/effect_single.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Effects/Door/close_effect.gd" type="Script" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "close",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "open",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2.5, 5.6875 )
+extents = Vector2( 2.5, 8.01564 )
 
 [node name="DoorEffect" type="Node2D"]
 script = ExtResource( 4 )
@@ -45,6 +45,5 @@ animation = "close"
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
-position = Vector2( 0.5, 2.3125 )
+position = Vector2( -0.001, 0.014 )
 shape = SubResource( 2 )

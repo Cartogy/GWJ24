@@ -28,12 +28,12 @@ extents = Vector2( 104.226, 29.1624 )
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 485.5, 545 )
 
-[node name="Data" parent="DuckandChicks/PlayerController" index="0"]
+[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
 duck_attached_speed = 95.0
 duck_dettached_speed = 125.0
 chick_horde_speed = 155.0
 
-[node name="StateMachine" parent="DuckandChicks/PlayerController" index="1"]
+[node name="StateMachine" parent="DuckandChicks/PlayerController" index="3"]
 START_STATE = NodePath("../../../../Level_4/DuckandChicks/PlayerController/StateMachine/DuckMovement")
 
 [node name="Duck" parent="DuckandChicks" index="1"]
@@ -54,9 +54,6 @@ position = Vector2( 566.048, 524.137 )
 [node name="Lock_Barrier1" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 478, 96.1419 )
 key_path = NodePath("../../Level_4/Key")
-
-[node name="AnimatedSprite" parent="Lock_Barrier1" index="2"]
-scale = Vector2( 4, 4 )
 
 [node name="Key" parent="." index="2" instance=ExtResource( 3 )]
 position = Vector2( 485.5, 325 )

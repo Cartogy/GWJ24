@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Effects/LockEffects/Lock_Barrier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Textures/Door/Door_close_v2.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Door/Door_close_blue.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+class_name Lock
+
+signal notify_entity_is_near(lock)
+signal notify_entity_left
+
+export (NodePath) var key_path
+var key
+var near_lock
+
+
+
+func _ready():
+	key = get_node(key_path)
+
+func apply_key_item(key_item) -> bool:
+	if key_item == key:
+		unlock()
+		return true
+	else:
+		return false
+
+func unlock():
+	print_debug(\"Unlocked\")
+	get_node(\"StaticBody2D\").get_node(\"CollisionShape2D\").set_deferred(\"disabled\", true)
+	get_node(\"AnimatedSprite\").play(\"open\")
+
+
+# Notify Item Manager to update the DataEntities
+func _on_Area2D_body_entered(body):
+	if body as Duck || body as Chick:
+		emit_signal(\"notify_entity_is_near\", self)
+
+
+func _on_Area2D_body_exited(body):
+	emit_signal(\"notify_entity_left\")
+"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "close",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+} ]
+
+[node name="Lock_Barrier" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+frames = SubResource( 2 )
