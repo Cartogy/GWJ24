@@ -13,9 +13,6 @@ signal unlocking
 signal deactivate_duck
 signal activate_duck
 
-var cur_state = ""	# For chick commands
-var chick_state = ""
-
 func _ready():
 	emit_signal("change_duck_speed", $Data.duck_attached_speed)
 	emit_signal("change_item_entity", "Duck")
@@ -23,44 +20,44 @@ func _ready():
 # Change state of Chicks
 func _input(event):
 	# Commands only available on DuckController
-	if cur_state == "DuckController":
-		if event.is_action_pressed("stay_cmd"):		# H
-			SoundManager.play_quack_neutral()
-			chick_state = "Stay"
-			emit_signal("change_flock_state", "Stay")
-			emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-		elif event.is_action_pressed("follow_cmd"):		# M
-			chick_state = "Follow"
-			emit_signal("change_flock_state", "Follow")
-			emit_signal("change_duck_speed", $Data.duck_attached_speed)
-			emit_signal("change_chick_speed", $Data.chick_attached_speed)
+	if $ControlToggleCmd.get_current_state() == "Duck":
+		if event.is_action_pressed("quack_cmd"):		# H
+			if $DucklingQuackCmd.get_current_state() == "Attached":
+				emit_signal("change_flock_state", "Stay")
+				emit_signal("change_duck_speed", $Data.duck_dettached_speed)
+				SoundManager.play_quack_neutral()
+			else:	# dettached
+				emit_signal("change_flock_state", "Follow")
+				emit_signal("change_duck_speed", $Data.duck_attached_speed)
+				emit_signal("change_chick_speed", $Data.chick_attached_speed)
+			$DucklingQuackCmd.toggle_state()
 	# Command for both Duck Controller and Chick Controller
-	if event.is_action_pressed("unlocking"):
-		emit_signal("unlocking")
+
 
 # Direct control of Movement entities
 func get_input_v2():
-	if Input.is_action_pressed("duck_cmd"):
-		if cur_state != "DuckController":
+	if Input.is_action_just_pressed("control_cmd"):
+		# may have to refactor
+		if $ControlToggleCmd.get_current_state() == "Flock":
 			$StateMachine.change_state("DuckController")
 			emit_signal("change_flock_state", "Stay")
-			cur_state = "DuckController"
 			emit_signal("change_item_entity", "Duck")
 			emit_signal("activate_duck")
 			emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-		else:
-			if chick_state == "Follow":
-				emit_signal("change_flock_state", "Follow")
+			$ControlToggleCmd.toggle_state()
+		else:	# Duck
+			if $DucklingQuackCmd.get_current_state() == "Attached":
+				emit_signal("change_flock_state", "Stay")
 				emit_signal("change_duck_speed", $Data.duck_dettached_speed)
-				chick_state = "Follow"
-	elif Input.is_action_pressed("chick_cmd") && cur_state != "ChickController":		#T
-		$StateMachine.change_state("ChickController")
-		emit_signal("change_flock_state", "Flock")
-		emit_signal("change_chick_speed", $Data.chick_horde_speed)
-		cur_state = "ChickController"
-		emit_signal("change_item_entity", "Flock")
-		emit_signal("deactivate_duck")
-		chick_state = "Flock"
+				$DucklingQuackCmd.toggle_state()
+			else: # dettached
+				$StateMachine.change_state("ChickController")
+				emit_signal("change_flock_state", "Flock")
+				emit_signal("change_chick_speed", $Data.chick_horde_speed)
+				emit_signal("change_item_entity", "Flock")
+				emit_signal("deactivate_duck")
+				$ControlToggleCmd.toggle_state()
+	
 
 
 
