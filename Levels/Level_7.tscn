@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/Effects/effect_multiple.gd" type="Script" id=1]
+[ext_resource path="res://Levels/WorldComplete.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Parent_level.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/ItemManager/ItemManager.tscn" type="PackedScene" id=7]
 
@@ -24,12 +23,30 @@ func _physics_process(delta):
 "
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 85.1083, 21.5379 )
+extents = Vector2( 30.3763, 35.7267 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Area2D
+
+export (String, FILE, \"*.tscn\") var next_world
+
+func _physics_process(delta):
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		if body.name == \"Duck\":
+			if next_world:
+				get_tree().change_scene(next_world)
+#			else: #Go back to menu?
+#				pass
+"
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 22.7724, 41.4387 )
 
 [node name="Level_7" instance=ExtResource( 3 )]
 
 [node name="DuckandChicks" parent="." index="0"]
-position = Vector2( 988.328, 493.698 )
+position = Vector2( 137.579, 514.887 )
 
 [node name="PlayerController" parent="DuckandChicks" index="0"]
 position = Vector2( 238, 476 )
@@ -43,100 +60,96 @@ chick_horde_speed = 155.0
 position = Vector2( -3.54199, 1.51697 )
 
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
-position = Vector2( 36.6477, 71.1801 )
+position = Vector2( 937.191, 125.213 )
 
 [node name="Chick2" parent="DuckandChicks/FlockManager" index="1"]
-position = Vector2( 90.5657, 84.4641 )
+position = Vector2( 991.109, 138.497 )
 
 [node name="Chick3" parent="DuckandChicks/FlockManager" index="2"]
-position = Vector2( 92.3477, 58.6271 )
+position = Vector2( 992.891, 112.66 )
 
 [node name="Switches" type="Node" parent="." index="1"]
 
 [node name="Switch1" parent="Switches" index="0" instance=ExtResource( 4 )]
-position = Vector2( 769.413, 429.613 )
+position = Vector2( 249.217, 541.916 )
 scale = Vector2( 4, 4 )
 
 [node name="Switch2" parent="Switches" index="1" instance=ExtResource( 4 )]
-position = Vector2( 959.764, 41.5574 )
+position = Vector2( 252.043, 150.682 )
 scale = Vector2( 4, 4 )
 
 [node name="Switch3" parent="Switches" index="2" instance=ExtResource( 4 )]
-position = Vector2( 72.7794, 561.905 )
-scale = Vector2( 4, 4 )
-
-[node name="Switch4" parent="Switches" index="3" instance=ExtResource( 4 )]
-position = Vector2( 899.288, 565.685 )
-scale = Vector2( 4, 4 )
-
-[node name="Switch5" parent="Switches" index="4" instance=ExtResource( 4 )]
-position = Vector2( 494.853, 331.339 )
+position = Vector2( 572.846, 160.368 )
 scale = Vector2( 4, 4 )
 
 [node name="Doors" type="Node" parent="." index="2"]
 
 [node name="DoorEffect1" parent="Doors" index="0" instance=ExtResource( 2 )]
-position = Vector2( 103.994, 264.376 )
-scale = Vector2( 50, 5 )
+position = Vector2( 393, 95 )
+scale = Vector2( 10, 24 )
+on_effect = "Close"
+off_effect = "Open"
 effect_type = 1
 switch_path = NodePath("../../Switches/Switch1")
 
 [node name="DoorEffect2" parent="Doors" index="1" instance=ExtResource( 2 )]
-position = Vector2( 271.564, 100.587 )
-scale = Vector2( 10, 11 )
+position = Vector2( 393, 410 )
+scale = Vector2( 10, 24 )
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch2")
+
+[node name="DoorEffect3" parent="Doors" index="2" instance=ExtResource( 2 )]
+position = Vector2( 750, 95 )
+scale = Vector2( 10, 24 )
 effect_type = 1
 switch_path = NodePath("../../Switches/Switch1")
 
-[node name="DoorEffect3" parent="Doors" index="2" instance=ExtResource( 2 )]
-position = Vector2( 691.117, 477.303 )
-scale = Vector2( 10, 16 )
-switch_path = NodePath("../../Switches/Switch5")
-
 [node name="DoorEffect4" parent="Doors" index="3" instance=ExtResource( 2 )]
-position = Vector2( 481.97, 7.92981 )
-scale = Vector2( 40, 5 )
-script = ExtResource( 1 )
-switch_path = [ NodePath("../../Switches/Switch2"), NodePath("../../Switches/Switch3"), NodePath("../../Switches/Switch5") ]
+position = Vector2( 750, 410 )
+scale = Vector2( 10, 24 )
+on_effect = "Close"
+off_effect = "Open"
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch2")
 
 [node name="DoorEffect5" parent="Doors" index="4" instance=ExtResource( 2 )]
-position = Vector2( 838.528, 352.571 )
-scale = Vector2( 50, 5 )
-switch_path = NodePath("../../Switches/Switch5")
+position = Vector2( 935.999, 460.636 )
+scale = Vector2( 10, 7 )
+effect_type = 1
+switch_path = NodePath("../../Switches/Switch3")
 
 [node name="DoorEffect6" parent="Doors" index="5" instance=ExtResource( 2 )]
-position = Vector2( 490, 203.9 )
-scale = Vector2( 10, 3 )
+position = Vector2( 78.9284, 147.748 )
+scale = Vector2( 10, 6 )
 effect_type = 1
-switch_path = NodePath("../../Switches/Switch4")
-
-[node name="DoorEffect7" parent="Doors" index="6" instance=ExtResource( 2 )]
-position = Vector2( 490, 453.364 )
-scale = Vector2( 10, 3 )
-effect_type = 1
-switch_path = NodePath("../../Switches/Switch4")
+switch_path = NodePath("../../Switches/Switch3")
 
 [node name="Item" parent="." index="3" instance=ExtResource( 6 )]
-position = Vector2( 174.755, 131.549 )
+position = Vector2( 109.068, 402.772 )
 item_name = "Key"
 item_manager_path = NodePath("../ItemManager")
-
-[node name="Sprite" parent="Item" index="0"]
-modulate = Color( 0.968627, 1, 0, 1 )
-texture = ExtResource( 5 )
 
 [node name="ItemManager" parent="." index="4" instance=ExtResource( 7 )]
 
 [node name="WorldComplete" parent="." index="5"]
-position = Vector2( 493.7, -42.1984 )
+position = Vector2( 1006.48, 467.403 )
 script = SubResource( 1 )
-next_world = "res://Levels/Level_0.tscn"
+next_world = "res://Levels/Level_7.tscn"
 
 [node name="CollisionShape2D" parent="WorldComplete" index="0"]
-position = Vector2( 3, 10 )
+position = Vector2( -1, 13 )
 shape = SubResource( 2 )
 
-[node name="TileMap" parent="." index="6"]
-tile_data = PoolIntArray( -131060, 1, 0, -131059, 1, 0, -131058, 1, 0, -131057, 1, 0, -131056, 1, 0, -131055, 1, 0, -131054, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65518, 1, 0, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 1, 0, -65509, 1, 0, -65508, 1, 0, -65507, 1, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, 65535, 1, 0, 8, 1, 0, 25, 1, 0, 32, 1, 0, 131071, 1, 0, 65544, 1, 0, 65561, 1, 0, 65568, 1, 0, 196607, 1, 0, 131096, 0, 0, 131097, 0, 0, 131104, 1, 0, 262143, 1, 0, 196636, 0, 0, 196637, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 327679, 1, 0, 262172, 0, 0, 262176, 1, 0, 393215, 1, 0, 327712, 1, 0, 458751, 1, 0, 393224, 0, 0, 393248, 1, 0, 524287, 1, 0, 458760, 0, 0, 458766, 0, 0, 458768, 0, 0, 458784, 1, 0, 589823, 1, 0, 524296, 0, 0, 524302, 0, 0, 524304, 0, 0, 524320, 1, 0, 655359, 1, 0, 589837, 0, 0, 589841, 0, 0, 589856, 1, 0, 720895, 1, 0, 655372, 0, 0, 655373, 0, 0, 655377, 0, 0, 655378, 0, 0, 655392, 1, 0, 786431, 1, 0, 720909, 0, 0, 720913, 0, 0, 720917, 0, 0, 720918, 0, 0, 720927, 1, 0, 720928, 1, 0, 851967, 1, 0, 786446, 0, 0, 786448, 0, 0, 786453, 0, 0, 786464, 1, 0, 917503, 1, 0, 851972, 0, 0, 851982, 0, 0, 851984, 0, 0, 852000, 1, 0, 983039, 1, 0, 917508, 0, 0, 917536, 1, 0, 1048575, 1, 0, 983040, 1, 0, 983041, 1, 0, 983042, 1, 0, 983043, 1, 0, 983044, 1, 0, 983072, 1, 0, 1114111, 1, 0, 1048608, 1, 0, 1179647, 1, 0, 1114119, 1, 0, 1114120, 0, 0, 1114121, 0, 0, 1114144, 1, 0, 1245183, 1, 0, 1179655, 1, 0, 1179680, 1, 0, 1310719, 1, 0, 1245184, 1, 0, 1245185, 1, 0, 1245186, 1, 0, 1245187, 1, 0, 1245188, 1, 0, 1245189, 1, 0, 1245190, 1, 0, 1245191, 1, 0, 1245192, 1, 0, 1245193, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 1245202, 1, 0, 1245203, 1, 0, 1245204, 1, 0, 1245205, 1, 0, 1245206, 1, 0, 1245207, 1, 0, 1245208, 1, 0, 1245209, 1, 0, 1245210, 1, 0, 1245211, 1, 0, 1245212, 1, 0, 1245213, 1, 0, 1245214, 1, 0, 1245215, 1, 0, 1245216, 1, 0 )
+[node name="WorldComplete2" parent="." index="6" instance=ExtResource( 1 )]
+position = Vector2( 25.4271, 159.979 )
+script = SubResource( 3 )
+next_world = "res://Levels/Level_8.tscn"
+
+[node name="CollisionShape2D" parent="WorldComplete2" index="0"]
+shape = SubResource( 4 )
+
+[node name="TileMap" parent="." index="7"]
+tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 1, 0, -65509, 1, 0, -65508, 1, 0, -65507, 1, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, 65535, 1, 0, 32, 1, 0, 131071, 1, 0, 65568, 1, 0, 196607, 1, 0, 131104, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 0, 0, 196640, 1, 0, 327679, 1, 0, 262176, 1, 0, 393215, 1, 0, 327712, 1, 0, 458751, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 0, 0, 393248, 1, 0, 524287, 1, 0, 458784, 1, 0, 589823, 1, 0, 524320, 1, 0, 655359, 1, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 1, 0, 720895, 1, 0, 655392, 1, 0, 786431, 1, 0, 720928, 1, 0, 851967, 1, 0, 786462, 0, 0, 786464, 1, 0, 917503, 1, 0, 851998, 1, 0, 851999, 1, 0, 852000, 1, 0, 983039, 1, 0, 917536, 1, 0, 1048575, 1, 0, 983072, 1, 0, 1114111, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1179647, 1, 0, 1114142, 0, 0, 1114144, 1, 0, 1245183, 1, 0, 1179680, 1, 0, 1310719, 1, 0, 1245184, 1, 0, 1245185, 1, 0, 1245186, 1, 0, 1245187, 1, 0, 1245188, 1, 0, 1245189, 1, 0, 1245190, 1, 0, 1245191, 1, 0, 1245192, 1, 0, 1245193, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0, 1245201, 1, 0, 1245202, 1, 0, 1245203, 1, 0, 1245204, 1, 0, 1245205, 1, 0, 1245206, 1, 0, 1245207, 1, 0, 1245208, 1, 0, 1245209, 1, 0, 1245210, 1, 0, 1245211, 1, 0, 1245212, 1, 0, 1245213, 1, 0, 1245214, 1, 0, 1245215, 1, 0, 1245216, 1, 0 )
 [connection signal="change_item_entity" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
 [connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
 [connection signal="update_entity_position" from="DuckandChicks/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
@@ -147,3 +160,5 @@ tile_data = PoolIntArray( -131060, 1, 0, -131059, 1, 0, -131058, 1, 0, -131057, 
 [editable path="DuckandChicks/PlayerController"]
 
 [editable path="Item"]
+
+[editable path="WorldComplete2"]

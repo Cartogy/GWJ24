@@ -103,5 +103,3 @@ func _on_Lock_notify_entity_left():
 
 func _on_PlayerController_unlocking():
 	unlock_lock()
-
-

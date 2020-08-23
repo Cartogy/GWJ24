@@ -98,7 +98,7 @@ switch_path = NodePath("../../Switches/Switch1")
 
 [node name="WorldComplete" parent="." index="3"]
 position = Vector2( 995.65, 473.617 )
-next_world = "res://Levels/Level_6a.tscn"
+next_world = "res://Levels/Level_7.tscn"
 
 [node name="CollisionShape2D" parent="WorldComplete" index="0"]
 shape = SubResource( 1 )
@@ -106,7 +106,7 @@ shape = SubResource( 1 )
 [node name="WorldComplete2" parent="." index="4" instance=ExtResource( 1 )]
 position = Vector2( 32.2487, 163.157 )
 script = SubResource( 2 )
-next_world = "res://Levels/Level_6a.tscn"
+next_world = "res://Levels/Level_7.tscn"
 
 [node name="CollisionShape2D" parent="WorldComplete2" index="0"]
 shape = SubResource( 3 )
