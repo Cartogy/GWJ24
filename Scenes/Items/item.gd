@@ -16,6 +16,7 @@ func _ready():
 	item_manager = get_node(item_manager_path)
 	entity_near = false
 	picked = false
+	self.connect("notify_item_manager", item_manager, "_on_Item_notify_item_manager")
 
 func _input(event):
 	if event.is_action_pressed("item_cmd") && entity_near && picked == false:

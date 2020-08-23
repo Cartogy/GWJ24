@@ -152,10 +152,6 @@ tile_data = PoolIntArray( -196596, 1, 0, -196595, 1, 0, -196594, 1, 0, -196593, 
 [connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier3" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
 [connection signal="notify_entity_is_near" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
 [connection signal="notify_entity_left" from="LockBarriers/Lock_Barrier4" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_item_manager" from="Keys/Key1" to="ItemManager" method="_on_Key_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key2" to="ItemManager" method="_on_Key_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key3" to="ItemManager" method="_on_Key_notify_item_manager"]
-[connection signal="notify_item_manager" from="Keys/Key4" to="ItemManager" method="_on_Key_notify_item_manager"]
 
 [editable path="DuckandChicks"]
 
