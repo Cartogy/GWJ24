@@ -113,3 +113,19 @@ func _on_PlayerController_unlocking():
 		unlock_lock()
 
 
+
+
+func _on_Key3_notify_item_manager(item) -> void:
+	pass # Replace with function body.
+
+
+func _on_Key2_notify_item_manager(item) -> void:
+	pass # Replace with function body.
+
+
+func _on_Key1_notify_item_manager(item) -> void:
+	pass # Replace with function body.
+
+
+func _on_Key4_notify_item_manager(item) -> void:
+	pass # Replace with function body.

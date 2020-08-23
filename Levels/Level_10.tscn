@@ -36,9 +36,6 @@ position = Vector2( 0.867249, 8.46161 )
 [node name="Duck" parent="DuckandChicks" index="1"]
 position = Vector2( -3.54199, 1.51697 )
 
-[node name="FlockManager" parent="DuckandChicks" index="2"]
-main_duck_path = NodePath("../../../Level_8/DuckandChicks/Duck")
-
 [node name="Chick" parent="DuckandChicks/FlockManager" index="0"]
 position = Vector2( 478.479, 503.668 )
 
@@ -72,7 +69,7 @@ scale = Vector2( 4, 4 )
 position = Vector2( 112.161, 47.7424 )
 scale = Vector2( 5, 5.967 )
 effect_type = 1
-switch_path = NodePath("../../../Level_8/Switches/Switch1")
+switch_path = NodePath("../../Switches/Switch1")
 
 [node name="DoorEffect2" parent="Doors" index="1" instance=ExtResource( 4 )]
 position = Vector2( 912.379, 48.1352 )
