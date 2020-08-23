@@ -78,6 +78,10 @@ tile_data = PoolIntArray( 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 
 [node name="Key_Sign" parent="." index="6" instance=ExtResource( 1 )]
 position = Vector2( 552, 312 )
 scale = Vector2( 3, 3 )
+
+[node name="Key_Sign2" parent="." index="7" instance=ExtResource( 1 )]
+position = Vector2( 536, 160 )
+scale = Vector2( 3, 3 )
 [connection signal="change_item_entity" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
 [connection signal="unlocking" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_unlocking"]
 [connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]

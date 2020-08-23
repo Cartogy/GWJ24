@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Textures/Key_Signs/Shift_Sign_Flock.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Key_Signs/KeySigns.tscn" type="PackedScene" id=2]
+
+[node name="Key_Sign" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
