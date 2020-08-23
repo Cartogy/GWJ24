@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Textures/Tilesets/tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Textures/Tilesets/Bush.png" type="Texture" id=2]
 [ext_resource path="res://Textures/Tilesets/Hedge_TileSheet.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Tilesets/tile_set_v3.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -340,23 +341,21 @@ __meta__ = {
 }
 
 [node name="28" type="Sprite" parent="."]
-position = Vector2( 48, 240 )
-rotation = 3.14159
-texture = ExtResource( 1 )
+position = Vector2( 32, 224 )
+texture = ExtResource( 4 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 32, 16, 16 )
+region_rect = Rect2( 64, 32, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="29" type="Sprite" parent="."]
-position = Vector2( 80, 240 )
-rotation = 3.14159
-texture = ExtResource( 1 )
+position = Vector2( 64, 224 )
+texture = ExtResource( 4 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 16, 32, 16, 16 )
+region_rect = Rect2( 80, 32, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -364,10 +363,110 @@ __meta__ = {
 [node name="30" type="Sprite" parent="."]
 position = Vector2( 112, 240 )
 rotation = 3.14159
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 112, 16, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="31" type="Sprite" parent="."]
+position = Vector2( 160, 96 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="32" type="Sprite" parent="."]
+position = Vector2( 160, 128 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 96, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="33" type="Sprite" parent="."]
+position = Vector2( 160, 192 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="34" type="Sprite" parent="."]
+position = Vector2( 160, 160 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 112, 32, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="35" type="Sprite" parent="."]
+position = Vector2( 192, 96 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="36" type="Sprite" parent="."]
+position = Vector2( 224, 96 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="37" type="Sprite" parent="."]
+position = Vector2( 256, 96 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 32, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="38" type="Sprite" parent="."]
+position = Vector2( 192, 128 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 48, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="39" type="Sprite" parent="."]
+position = Vector2( 192, 160 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 64, 48, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="40" type="Sprite" parent="."]
+position = Vector2( 192, 192 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 80, 48, 16, 16 )
 __meta__ = {
 "_edit_group_": true
 }
