@@ -5,5 +5,5 @@ https://m.soundcloud.com/xicoh94
 
 
 # Music license
-CC BY-NC-SA 4.0
+All music that is part of the game/repo is under the CC BY-NC-SA 4.0 license.
 https://creativecommons.org/licenses/by-nc-sa/4.0/
