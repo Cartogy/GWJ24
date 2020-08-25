@@ -34,6 +34,7 @@ position = Vector2( 566.048, 524.137 )
 
 [node name="Lock_Barrier1" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 478, 96.1419 )
+item_manager_path = NodePath("../ItemManager")
 key_path = NodePath("../../Level_4/Key")
 
 [node name="Key" parent="." index="2" instance=ExtResource( 3 )]

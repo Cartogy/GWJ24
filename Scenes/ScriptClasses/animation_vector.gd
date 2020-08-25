@@ -5,10 +5,11 @@ class_name AnimationVector
 var degree_apart = 15.0
 
 onready var vector_entity : VectorMovement = get_owner()
-var anim : AnimatedSprite
+var anim : AnimationPlayer
 
 func _ready():
-	anim = vector_entity.get_node("AnimatedSprite")
+	anim = vector_entity.get_node("AnimationPlayer")
+	print(anim)
 
 func _process(delta):
 	animation_direction()
@@ -20,34 +21,31 @@ func animation_direction():
 	var forward_v = vector_entity.get_forward_v()
 
 	# Flip sprites
-	if forward_v.x < 0:
-		anim.flip_h = true
-	else:
-		anim.flip_h = false
+
 
 	# Choose Top or Bottom sprites
 	if forward_v.y < 0:	# Top
 		if degrees <= degree_apart:
-			anim.play("side")
+			anim.play("East")
 		elif degrees > 15.0 && degrees <= 45.0 + degree_apart:
-			anim.play("top_right")
+			anim.play("North_East")
 		elif degrees > 45.0 + degree_apart && degrees < 90.0 + degree_apart:
-			anim.play("up")
+			anim.play("North")
 		elif degrees > 90 + degree_apart && degrees < 135 + degree_apart:
-			anim.play("top_right")
+			anim.play("North_West")
 		elif degrees > 135 + degree_apart && degree_apart <= 180.0:
-			anim.play("side")
+			anim.play("West")
 	else:	# Bottom
 		if degrees <= degree_apart:
-			anim.play("side")
+			anim.play("East")
 		elif degrees > 15.0 && degrees <= 45.0 + degree_apart:
-			anim.play("bottom_right")
+			anim.play("South_East")
 		elif degrees > 45.0 + degree_apart && degrees <= 90.0 + degree_apart:
-			anim.play("down")
+			anim.play("South")
 		elif degrees > 90 + degree_apart && degrees < 135 + degree_apart:
-			anim.play("bottom_right")
+			anim.play("South_West")
 		elif degrees > 135 + degree_apart && degree_apart <= 180.0:
-			anim.play("side")
+			anim.play("West")
 
 
 
