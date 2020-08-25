@@ -23,8 +23,9 @@ func change_direction(dir):
 	$ForwardRay.set_point_position(1, get_forward_v() * 4)
 
 func _process(delta):
-	if get_desired_direction_v() == Vector2.ZERO && $AnimatedSprite.is_playing():
+	if get_desired_direction_v() == Vector2.ZERO && $AnimationPlayer.is_playing():
 		$AnimatedSprite.stop()
+		$AnimationPlayer.stop()
 	#update()	# Draw Circle
 
 func get_gap():
