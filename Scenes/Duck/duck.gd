@@ -9,6 +9,8 @@ export (int) var radius
 export (float) var steering
 
 func _ready():
+	var item_manager = get_owner().get_parent().get_node("ItemManager")
+	self.connect("update_position_entity", item_manager, "_on_Duck_update_position_entity")
 	$CollisionShape2D.position = Vector2(0.3, -3)
 	if steering < 0.0:
 		steering = 0

@@ -1,7 +1,7 @@
 extends "../StateMachine/state.gd"
 
-signal update_flock_center(dir, spd)
-signal calculate_flock_center_average()
+signal update_flock_center(dir, spd)		# FlockManager
+signal calculate_flock_center_average()		# FlockManager
 
 var player
 var data
@@ -9,7 +9,10 @@ var dir_v = Vector2.ZERO
 
 func _ready():
 	player = get_owner()
+	var flock = player.get_parent().get_node("FlockManager")
 	data = player.get_node("Data")
+	self.connect("update_flock_center", flock, "_on_ChickHordeMovement_update_flock_center")
+	self.connect("calculate_flock_center_average", flock, "_on_ChickHordeMovement_calculate_flock_center_average")
 
 func enter():
 	print("CHick COntrol")

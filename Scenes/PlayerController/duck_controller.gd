@@ -5,6 +5,13 @@ onready var player = get_owner()
 signal give_desired_direction(dir)		# Connceted to Duck
 signal stop_moving							# Connected to Duck
 
+func _ready():
+	var main_tree = get_parent().get_parent().get_parent()
+	print(main_tree)
+	var duck = main_tree.get_node("Duck")
+	self.connect("give_desired_direction", duck, "_on_DuckMovement_give_desired_direction")
+	self.connect("stop_moving", duck, "_on_DuckMovement_stop_moving")
+
 func enter():
 	print("ENtering Duck Movement")
 	

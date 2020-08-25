@@ -17,6 +17,10 @@ var goal = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var item_manager = get_parent().get_parent().get_node("ItemManager")
+	self.connect("update_entity_position", item_manager, "_on_FlockManager_update_entity_position")
+	
+	
 	main_duck = get_node(main_duck_path)
 	var previous_chick = null
 	for chick in get_children():

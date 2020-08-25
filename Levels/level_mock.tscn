@@ -15,7 +15,7 @@ scale = Vector2( 4.5, 4.5 )
 
 [node name="DuckChickControl" parent="." instance=ExtResource( 1 )]
 
-[node name="Data" parent="DuckChickControl/PlayerController" index="0"]
+[node name="Data" parent="DuckChickControl/PlayerController" index="2"]
 duck_attached_speed = 50.0
 
 [node name="Chick2" parent="DuckChickControl/FlockManager" index="1"]
@@ -36,12 +36,9 @@ scale = Vector2( 3, 3 )
 
 [node name="Item" parent="." instance=ExtResource( 5 )]
 position = Vector2( 412.014, 202.87 )
+item_manager_path = NodePath("../ItemManager")
 
 [node name="ItemManager" parent="." instance=ExtResource( 6 )]
-[connection signal="change_item_entity" from="DuckChickControl/PlayerController" to="ItemManager" method="_on_PlayerController_change_item_entity"]
-[connection signal="update_position_entity" from="DuckChickControl/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
-[connection signal="update_entity_position" from="DuckChickControl/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
-[connection signal="notify_item_manager" from="Item" to="ItemManager" method="_on_Item_notify_item_manager"]
 
 [editable path="DuckChickControl"]
 

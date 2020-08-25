@@ -30,11 +30,6 @@ extents = Vector2( 32.9539, 64.5531 )
 [node name="DuckandChicks" parent="." index="0"]
 position = Vector2( 928.277, 296.439 )
 
-[node name="Data" parent="DuckandChicks/PlayerController" index="2"]
-duck_attached_speed = 95.0
-duck_dettached_speed = 125.0
-chick_horde_speed = 155.0
-
 [node name="StateMachine" parent="DuckandChicks/PlayerController" index="3"]
 START_STATE = NodePath("../../../../Level_4/DuckandChicks/PlayerController/StateMachine/DuckMovement")
 
@@ -93,9 +88,6 @@ tile_data = PoolIntArray( 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 
 [connection signal="unlocking" from="DuckandChicks/PlayerController" to="ItemManager" method="_on_PlayerController_unlocking"]
 [connection signal="update_position_entity" from="DuckandChicks/Duck" to="ItemManager" method="_on_Duck_update_position_entity"]
 [connection signal="update_entity_position" from="DuckandChicks/FlockManager" to="ItemManager" method="_on_FlockManager_update_entity_position"]
-[connection signal="notify_entity_is_near" from="Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_is_near"]
-[connection signal="notify_entity_left" from="Lock_Barrier1" to="ItemManager" method="_on_Lock_notify_entity_left"]
-[connection signal="notify_item_manager" from="Key" to="ItemManager" method="_on_Item_notify_item_manager"]
 
 [editable path="DuckandChicks"]
 

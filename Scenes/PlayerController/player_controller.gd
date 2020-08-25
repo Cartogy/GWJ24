@@ -2,11 +2,11 @@ extends Node2D
 
 # Responsible for input from the player to play the game
 
-signal change_flock_state(state)
-signal change_duck_speed(spd)
-signal change_chick_speed(spd)
+signal change_flock_state(state)	# Flock Manager
+signal change_duck_speed(spd)		# Duck
+signal change_chick_speed(spd)		#Flock manager
 
-signal change_item_entity(state)
+signal change_item_entity(state)	# ItemManager
 
 signal unlocking
 
@@ -14,6 +14,21 @@ signal deactivate_duck
 signal activate_duck
 
 func _ready():
+	var main_tree = get_parent()
+	var duck = main_tree.get_node("Duck")
+	print(duck)
+	
+	self.connect("change_duck_speed", duck, "_on_PlayerController_change_duck_speed")
+	var flock = main_tree.get_node("FlockManager")
+	self.connect("change_flock_state", flock, "_on_PlayerController_change_flock_state")
+	self.connect("change_chick_speed", flock, "_on_PlayerController_change_chick_speed")
+	
+	var item_manager = main_tree.get_parent().get_node("ItemManager")
+	self.connect("change_item_entity", item_manager, "_on_PlayerController_change_item_entity")
+	
+	self.connect("activate_duck", duck, "_on_PlayerController_activate_duck")
+	self.connect("deactivate_duck", duck, "_on_PlayerController_deactivate_duck")
+	
 	emit_signal("change_duck_speed", $Data.duck_attached_speed)
 	emit_signal("change_item_entity", "Duck")
 
