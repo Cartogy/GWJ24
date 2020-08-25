@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Effects/LockEffects/Lock_Barrier.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=3]
@@ -7,22 +7,7 @@
 [ext_resource path="res://Scenes/Effects/Door/DoorEffect.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Switch/Switch.tscn" type="PackedScene" id=7]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Area2D
-
-export (String, FILE, \"*.tscn\") var next_world
-
-func _physics_process(delta):
-	var bodies = get_overlapping_bodies()
-	for body in bodies:
-		if body.name == \"Duck\":
-			if next_world:
-				get_tree().change_scene(next_world)
-#			else: #Go back to menu?
-#				pass
-"
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.9539, 64.5531 )
 
 [node name="Level_4" instance=ExtResource( 5 )]
@@ -74,12 +59,11 @@ switch_path = NodePath("../Switch")
 
 [node name="WorldComplete" parent="." index="6"]
 position = Vector2( 35.5962, 308.015 )
-script = SubResource( 1 )
 next_world = "res://Levels/Level_6.tscn"
 
 [node name="CollisionShape2D" parent="WorldComplete" index="0"]
 position = Vector2( 27.6179, -8.909 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="TileMap" parent="." index="7"]
 modulate = Color( 1, 1, 1, 1 )
