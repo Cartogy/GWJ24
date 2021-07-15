@@ -3,6 +3,8 @@ extends Node
 enum State { PLAYING, OFF}
 var current_state;
 
+# commenting here
+
 func _ready():
 	current_state = State.OFF
 	
